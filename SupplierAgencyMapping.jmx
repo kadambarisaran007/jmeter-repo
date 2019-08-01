@@ -1,0 +1,2566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Supplier PubCde Mappings APIs" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Get supplier pub code mappings- owner" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1524490690000</longProp>
+        <longProp name="ThreadGroup.end_time">1524490690000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="PRSMQA2 Photon MDM Connection" enabled="false">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">Select 1 from dual</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@NY-RAC-NPRDEE01.NA.RTDOM.NET/prsmqa2_d</stringProp>
+          <stringProp name="driver">oracle.jdbc.driver.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">PHOTON_MDM_RO</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">PHOTON_MDM_RO</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="DEVBRNY  Photon MDM Connection" enabled="false">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">Select 1 from dual</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@ny-oracle-ee01.na.rtdom.net/DEVBRNY</stringProp>
+          <stringProp name="driver">oracle.jdbc.driver.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">PHOTON_MDM_RO</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">PHOTON_MDM_RO</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="false">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="env" elementType="Argument">
+              <stringProp name="Argument.name">env</stringProp>
+              <stringProp name="Argument.value">devbrny</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="false">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="protocol" elementType="Argument">
+              <stringProp name="Argument.name">protocol</stringProp>
+              <stringProp name="Argument.value">http</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="getSupplierMapping" elementType="Argument">
+              <stringProp name="Argument.name">getSupplierMapping</stringProp>
+              <stringProp name="Argument.value">prv.aos.devbrny.dds.net/prisma-masterdata-service/internal/mappings</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="Threads" elementType="Argument">
+              <stringProp name="Argument.name">Threads</stringProp>
+              <stringProp name="Argument.value">1</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="MDM_buy_system" elementType="Argument">
+              <stringProp name="Argument.name">MDM_buy_system</stringProp>
+              <stringProp name="Argument.value">MDM</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="SPECTRA OX Connection" enabled="false">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">Select 1</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnOX</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@ny-ox-db01:1521:ipgstag</stringProp>
+          <stringProp name="driver">oracle.jdbc.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">readonly</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">readonly</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MDM-Supplier-Mapping-SJ-Agency" enabled="false">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT  o.MEDIAOCEAN_ID AS agencyOwnerMediaoceanId,
+  o2.MEDIAOCEAN_ID     AS sellerOrganisationMediaoceanId,
+  supplier_code,
+  supplier_name,
+  TO_CHAR(to_date(&apos;1970-01-01&apos;, &apos;YYYY-MM-DD&apos;) + 1/86400000 * scm.modified_date,&apos;YYYY-MM-DD&apos;) as modified_date,
+  o3.mediaocean_id as agencyMediaoceanId
+FROM SUPPLIER_CODE_MAPPING scm
+JOIN organisation o
+ON scm.agency_owner_id=o.id
+JOIN organisation o2
+ON scm.seller_organisation_id =o2.id
+join organisation o3 on 
+o3.id=scm.agency_Id
+join sec_organisation so_a on o3.mediaocean_id = so_a.public_id
+join sec_users su on so_a.id = su.organisation_id
+WHERE scm.is_deleted          =0
+and   TO_CHAR(to_date(&apos;1970-01-01&apos;, &apos;YYYY-MM-DD&apos;) + 1/86400000 * scm.modified_date,&apos;YYYY-MM-DD&apos;) &lt;= TO_CHAR(sysdate,&apos;YYYY-MM-DD&apos;)
+and o.mediaocean_Id=&apos;35-1-1M-3-HC&apos;
+and o3.mediaocean_id=&apos;35-1-1M-3&apos;
+and su.id=331051702
+and scm.DISABLE_INHERITANCE=0
+and su.STATUS_ID=1
+and su.is_deleted=0</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">agencyOwnerMOId,sellerOrgMOId,supplierCode,supplierName,modifiedDate,agencyMOId</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="false">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${agencyOwnerMOId_#}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="false">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">${agencyOwnerMOId_#}</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="false">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+String aa1 = vars.get(&quot;agencyOwnerMOId_&quot;+ i);
+String agencyOwnerMOId;
+vars.put(&quot;agencyOwnerMOId&quot;,aa1);
+
+
+String mc1 = vars.get(&quot;sellerOrgMOId_&quot;+ i);
+String sellerOrgMOId;
+vars.put(&quot;sellerOrgMOId&quot;,mc1);
+log.info(sellerOrgMOId);
+
+
+String sc1 = vars.get(&quot;supplierCode_&quot;+ i);
+String supplierCode;
+vars.put(&quot;supplierCode&quot;,sc1);
+log.info(supplierCode);
+
+String cc1 = vars.get(&quot;supplierName_&quot;+ i);
+String supplierName;
+vars.put(&quot;supplierName&quot;,cc1);
+log.info(supplierName);
+
+String cn1 = vars.get(&quot;modifiedDate_&quot;+ i);
+String modifiedDate;
+vars.put(&quot;modifiedDate&quot;,cn1);
+log.info(modifiedDate);
+
+
+String cn1 = vars.get(&quot;agencyMOId_&quot;+ i);
+String agencyMOId;
+vars.put(&quot;agencyMOId&quot;,cn1);
+log.info(agencyMOId);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">PREAUTH_USER_ID</stringProp>
+                <stringProp name="Header.value">331051702</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ByMediaOcean-ID-Request-${counter}" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${getSupplierMapping}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">suppliers?agencyOwnerMediaoceanId=${agencyOwnerMOId}&amp;agencyMediaoceanId=${agencyMOId}&amp;lastModifiedSince=${modifiedDate}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="false">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="440471696">&quot;agencyOwnerMediaoceanId&quot;:&quot;${agencyOwnerMOId}&quot;</stringProp>
+                <stringProp name="949694934">&quot;sellerOrganisationMediaoceanId&quot;:&quot;${sellerOrgMOId}&quot;</stringProp>
+                <stringProp name="-411827356">&quot;supplierCode&quot;:&quot;${supplierCode}&quot;</stringProp>
+                <stringProp name="1068114724">&quot;supplierName&quot;:&quot;${supplierName}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="false">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>false</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <threadCounts>true</threadCounts>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MDM-Supplier-Mapping-idesk-Agency" enabled="false">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT  o.MEDIAOCEAN_ID AS agencyOwnerMediaoceanId,
+  o2.MEDIAOCEAN_ID     AS sellerOrganisationMediaoceanId,
+  supplier_code,
+  supplier_name,
+  TO_CHAR(to_date(&apos;1970-01-01&apos;, &apos;YYYY-MM-DD&apos;) + 1/86400000 * scm.modified_date,&apos;YYYY-MM-DD&apos;) as modified_date,
+  o3.mediaocean_id as agencyMediaoceanId
+FROM SUPPLIER_CODE_MAPPING scm
+JOIN organisation o
+ON scm.agency_owner_id=o.id
+JOIN organisation o2
+ON scm.seller_organisation_id =o2.id
+join organisation o3 on 
+o3.id=scm.agency_Id
+join sec_organisation so_a on o3.mediaocean_id = so_a.public_id
+join sec_users su on so_a.id = su.organisation_id
+WHERE scm.is_deleted          =0
+and   TO_CHAR(to_date(&apos;1970-01-01&apos;, &apos;YYYY-MM-DD&apos;) + 1/86400000 * scm.modified_date,&apos;YYYY-MM-DD&apos;) &lt;= TO_CHAR(sysdate,&apos;YYYY-MM-DD&apos;)
+and o.mediaocean_Id=&apos;22-WPRGZWT-1-HC&apos;
+and o3.mediaocean_id=&apos;35-1-400-5&apos;
+and su.id=140112
+and scm.DISABLE_INHERITANCE=0
+and su.STATUS_ID=1
+and su.is_deleted=0</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">agencyOwnerMOId,sellerOrgMOId,supplierCode,supplierName,modifiedDate,agencyMOId</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="false">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${agencyOwnerMOId_#}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">${agencyOwnerMOId_#}</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+String aa1 = vars.get(&quot;agencyOwnerMOId_&quot;+ i);
+String agencyOwnerMOId;
+vars.put(&quot;agencyOwnerMOId&quot;,aa1);
+
+
+String mc1 = vars.get(&quot;sellerOrgMOId_&quot;+ i);
+String sellerOrgMOId;
+vars.put(&quot;sellerOrgMOId&quot;,mc1);
+log.info(sellerOrgMOId);
+
+
+String sc1 = vars.get(&quot;supplierCode_&quot;+ i);
+String supplierCode;
+vars.put(&quot;supplierCode&quot;,sc1);
+log.info(supplierCode);
+
+String cc1 = vars.get(&quot;supplierName_&quot;+ i);
+String supplierName;
+vars.put(&quot;supplierName&quot;,cc1);
+log.info(supplierName);
+
+String cn1 = vars.get(&quot;modifiedDate_&quot;+ i);
+String modifiedDate;
+vars.put(&quot;modifiedDate&quot;,cn1);
+log.info(modifiedDate);
+
+
+String cn1 = vars.get(&quot;agencyMOId_&quot;+ i);
+String agencyMOId;
+vars.put(&quot;agencyMOId&quot;,cn1);
+log.info(agencyMOId);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">PREAUTH_USER_ID</stringProp>
+                <stringProp name="Header.value">140112</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ByMediaOcean-ID-Request-${counter}" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${getSupplierMapping}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">suppliers?agencyOwnerMediaoceanId=${agencyOwnerMOId}&amp;agencyMediaoceanId=${agencyMOId}&amp;lastModifiedSince=${modifiedDate}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="440471696">&quot;agencyOwnerMediaoceanId&quot;:&quot;${agencyOwnerMOId}&quot;</stringProp>
+                <stringProp name="949694934">&quot;sellerOrganisationMediaoceanId&quot;:&quot;${sellerOrgMOId}&quot;</stringProp>
+                <stringProp name="-411827356">&quot;supplierCode&quot;:&quot;${supplierCode}&quot;</stringProp>
+                <stringProp name="1068114724">&quot;supplierName&quot;:&quot;${supplierName}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>false</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <threadCounts>true</threadCounts>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MDM-Supplier-Mapping-CS-LDAP" enabled="false">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT  o.MEDIAOCEAN_ID AS agencyOwnerMediaoceanId,
+  o2.MEDIAOCEAN_ID     AS sellerOrganisationMediaoceanId,
+  supplier_code,
+  supplier_name,
+  TO_CHAR(to_date(&apos;1970-01-01&apos;, &apos;YYYY-MM-DD&apos;) + 1/86400000 * scm.modified_date,&apos;YYYY-MM-DD&apos;) as modified_date,
+  o3.mediaocean_id as agencyMediaoceanId
+FROM SUPPLIER_CODE_MAPPING scm
+JOIN organisation o
+ON scm.agency_owner_id=o.id
+JOIN organisation o2
+ON scm.seller_organisation_id =o2.id
+join organisation o3 on 
+o3.id=scm.agency_Id
+join sec_organisation so_a on o3.mediaocean_id = so_a.public_id
+join sec_users su on so_a.id = su.organisation_id
+WHERE scm.is_deleted          =0
+and   TO_CHAR(to_date(&apos;1970-01-01&apos;, &apos;YYYY-MM-DD&apos;) + 1/86400000 * scm.modified_date,&apos;YYYY-MM-DD&apos;) &lt;= TO_CHAR(sysdate,&apos;YYYY-MM-DD&apos;)
+and o.mediaocean_Id=&apos;22-UFYRDL1-0&apos;
+and o3.mediaocean_id=&apos;22-ZL83-1453&apos;
+and su.id=331049588
+and scm.DISABLE_INHERITANCE=0
+and su.STATUS_ID=1
+and su.is_deleted=0</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">agencyOwnerMOId,sellerOrgMOId,supplierCode,supplierName,modifiedDate,agencyMOId</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="false">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${agencyOwnerMOId_#}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">${agencyOwnerMOId_#}</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+String aa1 = vars.get(&quot;agencyOwnerMOId_&quot;+ i);
+String agencyOwnerMOId;
+vars.put(&quot;agencyOwnerMOId&quot;,aa1);
+
+
+String mc1 = vars.get(&quot;sellerOrgMOId_&quot;+ i);
+String sellerOrgMOId;
+vars.put(&quot;sellerOrgMOId&quot;,mc1);
+log.info(sellerOrgMOId);
+
+
+String sc1 = vars.get(&quot;supplierCode_&quot;+ i);
+String supplierCode;
+vars.put(&quot;supplierCode&quot;,sc1);
+log.info(supplierCode);
+
+String cc1 = vars.get(&quot;supplierName_&quot;+ i);
+String supplierName;
+vars.put(&quot;supplierName&quot;,cc1);
+log.info(supplierName);
+
+String cn1 = vars.get(&quot;modifiedDate_&quot;+ i);
+String modifiedDate;
+vars.put(&quot;modifiedDate&quot;,cn1);
+log.info(modifiedDate);
+
+
+String cn1 = vars.get(&quot;agencyMOId_&quot;+ i);
+String agencyMOId;
+vars.put(&quot;agencyMOId&quot;,cn1);
+log.info(agencyMOId);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">PREAUTH_USER_ID</stringProp>
+                <stringProp name="Header.value">331049588</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ByMediaOcean-ID-Request-${counter}" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${getSupplierMapping}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">suppliers?agencyOwnerMediaoceanId=${agencyOwnerMOId}&amp;agencyMediaoceanId=${agencyMOId}&amp;lastModifiedSince=${modifiedDate}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="440471696">&quot;agencyOwnerMediaoceanId&quot;:&quot;${agencyOwnerMOId}&quot;</stringProp>
+                <stringProp name="949694934">&quot;sellerOrganisationMediaoceanId&quot;:&quot;${sellerOrgMOId}&quot;</stringProp>
+                <stringProp name="-411827356">&quot;supplierCode&quot;:&quot;${supplierCode}&quot;</stringProp>
+                <stringProp name="1068114724">&quot;supplierName&quot;:&quot;${supplierName}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>false</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <threadCounts>true</threadCounts>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MDM-Supplier-Mapping-IPG-C" enabled="false">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT  o.MEDIAOCEAN_ID AS agencyOwnerMediaoceanId,
+  o2.MEDIAOCEAN_ID     AS sellerOrganisationMediaoceanId,
+  supplier_code,
+  supplier_name,
+  TO_CHAR(to_date(&apos;1970-01-01&apos;, &apos;YYYY-MM-DD&apos;) + 1/86400000 * scm.modified_date,&apos;YYYY-MM-DD&apos;) as modified_date,
+  o3.mediaocean_id as agencyMediaoceanId
+FROM SUPPLIER_CODE_MAPPING scm
+JOIN organisation o
+ON scm.agency_owner_id=o.id
+JOIN organisation o2
+ON scm.seller_organisation_id =o2.id
+join organisation o3 on 
+o3.id=scm.agency_Id
+join sec_organisation so_a on o3.mediaocean_id = so_a.public_id
+join sec_users su on so_a.id = su.organisation_id
+WHERE scm.is_deleted          =0
+and   TO_CHAR(to_date(&apos;1970-01-01&apos;, &apos;YYYY-MM-DD&apos;) + 1/86400000 * scm.modified_date,&apos;YYYY-MM-DD&apos;) &lt;= TO_CHAR(sysdate,&apos;YYYY-MM-DD&apos;)
+and o.mediaocean_Id=&apos;35-1-6MSH-7&apos;
+and o3.mediaocean_id=&apos;22-LLGJB3I-4&apos; 
+and su.id=331050463
+and scm.DISABLE_INHERITANCE=0
+and su.STATUS_ID=1
+and su.is_deleted=0</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">agencyOwnerMOId,sellerOrgMOId,supplierCode,supplierName,modifiedDate,agencyMOId</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="false">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${agencyOwnerMOId_#}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">${agencyOwnerMOId_#}</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+String aa1 = vars.get(&quot;agencyOwnerMOId_&quot;+ i);
+String agencyOwnerMOId;
+vars.put(&quot;agencyOwnerMOId&quot;,aa1);
+
+
+String mc1 = vars.get(&quot;sellerOrgMOId_&quot;+ i);
+String sellerOrgMOId;
+vars.put(&quot;sellerOrgMOId&quot;,mc1);
+log.info(sellerOrgMOId);
+
+
+String sc1 = vars.get(&quot;supplierCode_&quot;+ i);
+String supplierCode;
+vars.put(&quot;supplierCode&quot;,sc1);
+log.info(supplierCode);
+
+String cc1 = vars.get(&quot;supplierName_&quot;+ i);
+String supplierName;
+vars.put(&quot;supplierName&quot;,cc1);
+log.info(supplierName);
+
+String cn1 = vars.get(&quot;modifiedDate_&quot;+ i);
+String modifiedDate;
+vars.put(&quot;modifiedDate&quot;,cn1);
+log.info(modifiedDate);
+
+
+String cn1 = vars.get(&quot;agencyMOId_&quot;+ i);
+String agencyMOId;
+vars.put(&quot;agencyMOId&quot;,cn1);
+log.info(agencyMOId);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">PREAUTH_USER_ID</stringProp>
+                <stringProp name="Header.value">331050463</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ByMediaOcean-ID-Request-${counter}" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${getSupplierMapping}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">suppliers?agencyOwnerMediaoceanId=${agencyOwnerMOId}&amp;agencyMediaoceanId=${agencyMOId}&amp;lastModifiedSince=${modifiedDate}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="440471696">&quot;agencyOwnerMediaoceanId&quot;:&quot;${agencyOwnerMOId}&quot;</stringProp>
+                <stringProp name="949694934">&quot;sellerOrganisationMediaoceanId&quot;:&quot;${sellerOrgMOId}&quot;</stringProp>
+                <stringProp name="-411827356">&quot;supplierCode&quot;:&quot;${supplierCode}&quot;</stringProp>
+                <stringProp name="1068114724">&quot;supplierName&quot;:&quot;${supplierName}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>false</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <threadCounts>true</threadCounts>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="false">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Update supplier pub code mappings- owner" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1524490690000</longProp>
+        <longProp name="ThreadGroup.end_time">1524490690000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="PRSMQA2 Photon MDM Connection" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">Select 1</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@NY-RAC-NPRDEE01.NA.RTDOM.NET/prsmqa2_d</stringProp>
+          <stringProp name="driver">oracle.jdbc.driver.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">PHOTON_MDM_RO</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">PHOTON_MDM_RO</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="env" elementType="Argument">
+              <stringProp name="Argument.name">env</stringProp>
+              <stringProp name="Argument.value">prsmqa2</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="protocol" elementType="Argument">
+              <stringProp name="Argument.name">protocol</stringProp>
+              <stringProp name="Argument.value">http</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="putSupplierMapping" elementType="Argument">
+              <stringProp name="Argument.name">putSupplierMapping</stringProp>
+              <stringProp name="Argument.value">prv.aos.prsmqa2.dds.net/prisma-masterdata-service/internal/mappings</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="Threads" elementType="Argument">
+              <stringProp name="Argument.name">Threads</stringProp>
+              <stringProp name="Argument.value">1</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="MDM_buy_system" elementType="Argument">
+              <stringProp name="Argument.name">MDM_buy_system</stringProp>
+              <stringProp name="Argument.value">MDM</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="SPECTRA OX Connection" enabled="false">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">Select 1</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnOX</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@ny-ox-db01:1521:ipgstag</stringProp>
+          <stringProp name="driver">oracle.jdbc.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">readonly</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">readonly</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MDM-Supplier-Mapping-SJ-Agency" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT  o.MEDIAOCEAN_ID AS agencyOwnerMediaoceanId,
+  o2.MEDIAOCEAN_ID     AS sellerOrganisationMediaoceanId,
+  scm.supplier_code,
+  scm.supplier_name,
+  TO_CHAR(to_date(&apos;1970-01-01&apos;, &apos;YYYY-MM-DD&apos;) + 1/86400000 * scm.modified_date,&apos;YYYY-MM-DD&apos;) as modified_date,
+  o3.mediaocean_id as agencyMediaoceanId,
+ sv.BUSINESS_KEY
+FROM SUPPLIER_CODE_MAPPING scm
+JOIN organisation o
+ON scm.agency_owner_id=o.id
+JOIN organisation o2
+ON scm.seller_organisation_id =o2.id
+join organisation o3 on 
+o3.id=scm.agency_Id
+join sec_organisation so_a on o3.mediaocean_id = so_a.public_id
+join sec_users su on so_a.id = su.organisation_id
+join supplier_view sv on 
+sv.SUPPLIER_CODE = scm.SUPPLIER_CODE
+and sv.SUPPLIER_NAME=scm.SUPPLIER_NAME
+and sv.AGENCY_OWNER_ID=scm.AGENCY_OWNER_ID
+WHERE scm.is_deleted          =0
+and   TO_CHAR(to_date(&apos;1970-01-01&apos;, &apos;YYYY-MM-DD&apos;) + 1/86400000 * scm.modified_date,&apos;YYYY-MM-DD&apos;) &lt;= TO_CHAR(sysdate,&apos;YYYY-MM-DD&apos;)
+and o.mediaocean_Id=&apos;22-WPRGZWT-1-HC&apos;
+and o3.mediaocean_id=&apos;35-1-1M-3&apos;
+and su.id=142183
+and scm.DISABLE_INHERITANCE=0
+and su.STATUS_ID=1
+and su.is_deleted=0</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">agencyOwnerMOId,sellerOrgMOId,supplierCode,supplierName,modifiedDate,agencyMOId,businessKey</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${agencyOwnerMOId_#}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">${agencyOwnerMOId_#}</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+String aa1 = vars.get(&quot;agencyOwnerMOId_&quot;+ i);
+String agencyOwnerMOId;
+vars.put(&quot;agencyOwnerMOId&quot;,aa1);
+
+
+String mc1 = vars.get(&quot;sellerOrgMOId_&quot;+ i);
+String sellerOrgMOId;
+vars.put(&quot;sellerOrgMOId&quot;,mc1);
+log.info(sellerOrgMOId);
+
+
+String sc1 = vars.get(&quot;supplierCode_&quot;+ i);
+String supplierCode;
+vars.put(&quot;supplierCode&quot;,sc1);
+log.info(supplierCode);
+
+String cc1 = vars.get(&quot;supplierName_&quot;+ i);
+String supplierName;
+vars.put(&quot;supplierName&quot;,cc1);
+log.info(supplierName);
+
+String cn1 = vars.get(&quot;modifiedDate_&quot;+ i);
+String modifiedDate;
+vars.put(&quot;modifiedDate&quot;,cn1);
+log.info(modifiedDate);
+
+
+String cn1 = vars.get(&quot;agencyMOId_&quot;+ i);
+String agencyMOId;
+vars.put(&quot;agencyMOId&quot;,cn1);
+log.info(agencyMOId);
+
+
+
+String cb1 = vars.get(&quot;businessKey_&quot;+ i);
+String businessKey;
+vars.put(&quot;businessKey&quot;,cb1);
+log.info(businessKey);
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">PREAUTH_USER_ID</stringProp>
+                <stringProp name="Header.value">142183</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Delete Supplier Mapping -Request-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&#xd;
+    {&#xd;
+        &quot;supplierBusinessKey&quot;: &quot;${businessKey}&quot;,&#xd;
+        &quot;sellerOrganisationMediaoceanId&quot;: &quot;${sellerOrgMOId}&quot;,&#xd;
+        &quot;agencyMediaoceanId&quot;: &quot;${agencyMOId}&quot;&#xd;
+    }&#xd;
+]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${putSupplierMapping}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">suppliers</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="440471696">&quot;agencyOwnerMediaoceanId&quot;:&quot;${agencyOwnerMOId}&quot;</stringProp>
+                <stringProp name="949694934">&quot;sellerOrganisationMediaoceanId&quot;:&quot;${sellerOrgMOId}&quot;</stringProp>
+                <stringProp name="-411827356">&quot;supplierCode&quot;:&quot;${supplierCode}&quot;</stringProp>
+                <stringProp name="1068114724">&quot;supplierName&quot;:&quot;${supplierName}&quot;</stringProp>
+                <stringProp name="1060260340">&quot;supplierBusinessKey&quot;:&quot;${businessKey}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>false</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <threadCounts>true</threadCounts>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Update Supplier Mapping -Request-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&#xd;
+    {&#xd;
+        &quot;supplierBusinessKey&quot;: &quot;${businessKey}&quot;,&#xd;
+        &quot;sellerOrganisationMediaoceanId&quot;: &quot;${sellerOrgMOId}&quot;,&#xd;
+        &quot;agencyMediaoceanId&quot;: &quot;${agencyMOId}&quot;&#xd;
+    }&#xd;
+]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${putSupplierMapping}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">suppliers</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="440471696">&quot;agencyOwnerMediaoceanId&quot;:&quot;${agencyOwnerMOId}&quot;</stringProp>
+                <stringProp name="949694934">&quot;sellerOrganisationMediaoceanId&quot;:&quot;${sellerOrgMOId}&quot;</stringProp>
+                <stringProp name="-411827356">&quot;supplierCode&quot;:&quot;${supplierCode}&quot;</stringProp>
+                <stringProp name="1068114724">&quot;supplierName&quot;:&quot;${supplierName}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>false</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <threadCounts>true</threadCounts>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MDM-Supplier-Mapping-IDESK-Agency" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT  o.MEDIAOCEAN_ID AS agencyOwnerMediaoceanId,
+  o2.MEDIAOCEAN_ID     AS sellerOrganisationMediaoceanId,
+  scm.supplier_code,
+  scm.supplier_name,
+  TO_CHAR(to_date(&apos;1970-01-01&apos;, &apos;YYYY-MM-DD&apos;) + 1/86400000 * scm.modified_date,&apos;YYYY-MM-DD&apos;) as modified_date,
+  o3.mediaocean_id as agencyMediaoceanId,
+ sv.BUSINESS_KEY
+FROM SUPPLIER_CODE_MAPPING scm
+JOIN organisation o
+ON scm.agency_owner_id=o.id
+JOIN organisation o2
+ON scm.seller_organisation_id =o2.id
+join organisation o3 on 
+o3.id=scm.agency_Id
+join sec_organisation so_a on o3.mediaocean_id = so_a.public_id
+join sec_users su on so_a.id = su.organisation_id
+join supplier_view sv on 
+sv.SUPPLIER_CODE = scm.SUPPLIER_CODE
+and sv.SUPPLIER_NAME=scm.SUPPLIER_NAME
+and sv.AGENCY_OWNER_ID=scm.AGENCY_OWNER_ID
+WHERE scm.is_deleted          =0
+and   TO_CHAR(to_date(&apos;1970-01-01&apos;, &apos;YYYY-MM-DD&apos;) + 1/86400000 * scm.modified_date,&apos;YYYY-MM-DD&apos;) &lt;= TO_CHAR(sysdate,&apos;YYYY-MM-DD&apos;)
+and o.mediaocean_Id=&apos;22-WPRGZWT-1-HC&apos;
+and o3.mediaocean_id=&apos;35-1-400-5&apos;
+and su.id=140112
+and scm.DISABLE_INHERITANCE=0
+and su.STATUS_ID=1
+and su.is_deleted=0</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">agencyOwnerMOId,sellerOrgMOId,supplierCode,supplierName,modifiedDate,agencyMOId,businessKey</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${agencyOwnerMOId_#}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">${agencyOwnerMOId_#}</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+String aa1 = vars.get(&quot;agencyOwnerMOId_&quot;+ i);
+String agencyOwnerMOId;
+vars.put(&quot;agencyOwnerMOId&quot;,aa1);
+
+
+String mc1 = vars.get(&quot;sellerOrgMOId_&quot;+ i);
+String sellerOrgMOId;
+vars.put(&quot;sellerOrgMOId&quot;,mc1);
+log.info(sellerOrgMOId);
+
+
+String sc1 = vars.get(&quot;supplierCode_&quot;+ i);
+String supplierCode;
+vars.put(&quot;supplierCode&quot;,sc1);
+log.info(supplierCode);
+
+String cc1 = vars.get(&quot;supplierName_&quot;+ i);
+String supplierName;
+vars.put(&quot;supplierName&quot;,cc1);
+log.info(supplierName);
+
+String cn1 = vars.get(&quot;modifiedDate_&quot;+ i);
+String modifiedDate;
+vars.put(&quot;modifiedDate&quot;,cn1);
+log.info(modifiedDate);
+
+
+String cn1 = vars.get(&quot;agencyMOId_&quot;+ i);
+String agencyMOId;
+vars.put(&quot;agencyMOId&quot;,cn1);
+log.info(agencyMOId);
+
+
+
+String cb1 = vars.get(&quot;businessKey_&quot;+ i);
+String businessKey;
+vars.put(&quot;businessKey&quot;,cb1);
+log.info(businessKey);
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">PREAUTH_USER_ID</stringProp>
+                <stringProp name="Header.value">140112</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Delete Supplier Mapping -Request-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&#xd;
+    {&#xd;
+        &quot;supplierBusinessKey&quot;: &quot;${businessKey}&quot;,&#xd;
+        &quot;sellerOrganisationMediaoceanId&quot;: &quot;${sellerOrgMOId}&quot;,&#xd;
+        &quot;agencyMediaoceanId&quot;: &quot;${agencyMOId}&quot;&#xd;
+    }&#xd;
+]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${putSupplierMapping}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">suppliers</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="440471696">&quot;agencyOwnerMediaoceanId&quot;:&quot;${agencyOwnerMOId}&quot;</stringProp>
+                <stringProp name="949694934">&quot;sellerOrganisationMediaoceanId&quot;:&quot;${sellerOrgMOId}&quot;</stringProp>
+                <stringProp name="-411827356">&quot;supplierCode&quot;:&quot;${supplierCode}&quot;</stringProp>
+                <stringProp name="1068114724">&quot;supplierName&quot;:&quot;${supplierName}&quot;</stringProp>
+                <stringProp name="1060260340">&quot;supplierBusinessKey&quot;:&quot;${businessKey}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>false</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <threadCounts>true</threadCounts>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Update Supplier Mapping -Request-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&#xd;
+    {&#xd;
+        &quot;supplierBusinessKey&quot;: &quot;${businessKey}&quot;,&#xd;
+        &quot;sellerOrganisationMediaoceanId&quot;: &quot;${sellerOrgMOId}&quot;,&#xd;
+        &quot;agencyMediaoceanId&quot;: &quot;${agencyMOId}&quot;&#xd;
+    }&#xd;
+]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${putSupplierMapping}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">suppliers</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="440471696">&quot;agencyOwnerMediaoceanId&quot;:&quot;${agencyOwnerMOId}&quot;</stringProp>
+                <stringProp name="949694934">&quot;sellerOrganisationMediaoceanId&quot;:&quot;${sellerOrgMOId}&quot;</stringProp>
+                <stringProp name="-411827356">&quot;supplierCode&quot;:&quot;${supplierCode}&quot;</stringProp>
+                <stringProp name="1068114724">&quot;supplierName&quot;:&quot;${supplierName}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>false</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <threadCounts>true</threadCounts>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MDM-Supplier-Mapping-CS-LDAP" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT  o.MEDIAOCEAN_ID AS agencyOwnerMediaoceanId,
+  o2.MEDIAOCEAN_ID     AS sellerOrganisationMediaoceanId,
+  scm.supplier_code,
+  scm.supplier_name,
+  TO_CHAR(to_date(&apos;1970-01-01&apos;, &apos;YYYY-MM-DD&apos;) + 1/86400000 * scm.modified_date,&apos;YYYY-MM-DD&apos;) as modified_date,
+  o3.mediaocean_id as agencyMediaoceanId,
+ sv.BUSINESS_KEY
+FROM SUPPLIER_CODE_MAPPING scm
+JOIN organisation o
+ON scm.agency_owner_id=o.id
+JOIN organisation o2
+ON scm.seller_organisation_id =o2.id
+join organisation o3 on 
+o3.id=scm.agency_Id
+join sec_organisation so_a on o3.mediaocean_id = so_a.public_id
+join sec_users su on so_a.id = su.organisation_id
+join supplier_view sv on 
+sv.SUPPLIER_CODE = scm.SUPPLIER_CODE
+and sv.SUPPLIER_NAME=scm.SUPPLIER_NAME
+and sv.AGENCY_OWNER_ID=scm.AGENCY_OWNER_ID
+WHERE scm.is_deleted          =0
+and   TO_CHAR(to_date(&apos;1970-01-01&apos;, &apos;YYYY-MM-DD&apos;) + 1/86400000 * scm.modified_date,&apos;YYYY-MM-DD&apos;) &lt;= TO_CHAR(sysdate,&apos;YYYY-MM-DD&apos;)
+and o.mediaocean_Id=&apos;22-UFYRDL1-0&apos;
+and o3.mediaocean_id=&apos;22-ZL83-1453&apos;
+and su.id=331049588
+and scm.DISABLE_INHERITANCE=0
+and su.STATUS_ID=1
+and su.is_deleted=0</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">agencyOwnerMOId,sellerOrgMOId,supplierCode,supplierName,modifiedDate,agencyMOId,businessKey</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${agencyOwnerMOId_#}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">${agencyOwnerMOId_#}</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+String aa1 = vars.get(&quot;agencyOwnerMOId_&quot;+ i);
+String agencyOwnerMOId;
+vars.put(&quot;agencyOwnerMOId&quot;,aa1);
+
+
+String mc1 = vars.get(&quot;sellerOrgMOId_&quot;+ i);
+String sellerOrgMOId;
+vars.put(&quot;sellerOrgMOId&quot;,mc1);
+log.info(sellerOrgMOId);
+
+
+String sc1 = vars.get(&quot;supplierCode_&quot;+ i);
+String supplierCode;
+vars.put(&quot;supplierCode&quot;,sc1);
+log.info(supplierCode);
+
+String cc1 = vars.get(&quot;supplierName_&quot;+ i);
+String supplierName;
+vars.put(&quot;supplierName&quot;,cc1);
+log.info(supplierName);
+
+String cn1 = vars.get(&quot;modifiedDate_&quot;+ i);
+String modifiedDate;
+vars.put(&quot;modifiedDate&quot;,cn1);
+log.info(modifiedDate);
+
+
+String cn1 = vars.get(&quot;agencyMOId_&quot;+ i);
+String agencyMOId;
+vars.put(&quot;agencyMOId&quot;,cn1);
+log.info(agencyMOId);
+
+
+
+String cb1 = vars.get(&quot;businessKey_&quot;+ i);
+String businessKey;
+vars.put(&quot;businessKey&quot;,cb1);
+log.info(businessKey);
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">PREAUTH_USER_ID</stringProp>
+                <stringProp name="Header.value">331049588</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Delete Supplier Mapping -Request-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&#xd;
+    {&#xd;
+        &quot;supplierBusinessKey&quot;: &quot;${businessKey}&quot;,&#xd;
+        &quot;sellerOrganisationMediaoceanId&quot;: &quot;${sellerOrgMOId}&quot;,&#xd;
+        &quot;agencyMediaoceanId&quot;: &quot;${agencyMOId}&quot;&#xd;
+    }&#xd;
+]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${putSupplierMapping}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">suppliers</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="440471696">&quot;agencyOwnerMediaoceanId&quot;:&quot;${agencyOwnerMOId}&quot;</stringProp>
+                <stringProp name="949694934">&quot;sellerOrganisationMediaoceanId&quot;:&quot;${sellerOrgMOId}&quot;</stringProp>
+                <stringProp name="-411827356">&quot;supplierCode&quot;:&quot;${supplierCode}&quot;</stringProp>
+                <stringProp name="1068114724">&quot;supplierName&quot;:&quot;${supplierName}&quot;</stringProp>
+                <stringProp name="1060260340">&quot;supplierBusinessKey&quot;:&quot;${businessKey}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>false</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <threadCounts>true</threadCounts>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Update Supplier Mapping -Request-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&#xd;
+    {&#xd;
+        &quot;supplierBusinessKey&quot;: &quot;${businessKey}&quot;,&#xd;
+        &quot;sellerOrganisationMediaoceanId&quot;: &quot;${sellerOrgMOId}&quot;,&#xd;
+        &quot;agencyMediaoceanId&quot;: &quot;${agencyMOId}&quot;&#xd;
+    }&#xd;
+]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${putSupplierMapping}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">suppliers</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="440471696">&quot;agencyOwnerMediaoceanId&quot;:&quot;${agencyOwnerMOId}&quot;</stringProp>
+                <stringProp name="949694934">&quot;sellerOrganisationMediaoceanId&quot;:&quot;${sellerOrgMOId}&quot;</stringProp>
+                <stringProp name="-411827356">&quot;supplierCode&quot;:&quot;${supplierCode}&quot;</stringProp>
+                <stringProp name="1068114724">&quot;supplierName&quot;:&quot;${supplierName}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>false</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <threadCounts>true</threadCounts>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MDM-Supplier-Mapping-IPG-C" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT  o.MEDIAOCEAN_ID AS agencyOwnerMediaoceanId,
+  o2.MEDIAOCEAN_ID     AS sellerOrganisationMediaoceanId,
+  scm.supplier_code,
+  scm.supplier_name,
+  TO_CHAR(to_date(&apos;1970-01-01&apos;, &apos;YYYY-MM-DD&apos;) + 1/86400000 * scm.modified_date,&apos;YYYY-MM-DD&apos;) as modified_date,
+  o3.mediaocean_id as agencyMediaoceanId,
+ sv.BUSINESS_KEY
+FROM SUPPLIER_CODE_MAPPING scm
+JOIN organisation o
+ON scm.agency_owner_id=o.id
+JOIN organisation o2
+ON scm.seller_organisation_id =o2.id
+join organisation o3 on 
+o3.id=scm.agency_Id
+join sec_organisation so_a on o3.mediaocean_id = so_a.public_id
+join sec_users su on so_a.id = su.organisation_id
+join supplier_view sv on 
+sv.SUPPLIER_CODE = scm.SUPPLIER_CODE
+and sv.SUPPLIER_NAME=scm.SUPPLIER_NAME
+and sv.AGENCY_OWNER_ID=scm.AGENCY_OWNER_ID
+WHERE scm.is_deleted          =0
+and   TO_CHAR(to_date(&apos;1970-01-01&apos;, &apos;YYYY-MM-DD&apos;) + 1/86400000 * scm.modified_date,&apos;YYYY-MM-DD&apos;) &lt;= TO_CHAR(sysdate,&apos;YYYY-MM-DD&apos;)
+and o.mediaocean_Id=&apos;35-1-6MSH-7&apos;
+and o3.mediaocean_id=&apos;22-LLGJB3I-4&apos;
+and su.id=331050463
+and scm.DISABLE_INHERITANCE=0
+and su.STATUS_ID=1
+and su.is_deleted=0</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">agencyOwnerMOId,sellerOrgMOId,supplierCode,supplierName,modifiedDate,agencyMOId,businessKey</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${agencyOwnerMOId_#}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">${agencyOwnerMOId_#}</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+String aa1 = vars.get(&quot;agencyOwnerMOId_&quot;+ i);
+String agencyOwnerMOId;
+vars.put(&quot;agencyOwnerMOId&quot;,aa1);
+
+
+String mc1 = vars.get(&quot;sellerOrgMOId_&quot;+ i);
+String sellerOrgMOId;
+vars.put(&quot;sellerOrgMOId&quot;,mc1);
+log.info(sellerOrgMOId);
+
+
+String sc1 = vars.get(&quot;supplierCode_&quot;+ i);
+String supplierCode;
+vars.put(&quot;supplierCode&quot;,sc1);
+log.info(supplierCode);
+
+String cc1 = vars.get(&quot;supplierName_&quot;+ i);
+String supplierName;
+vars.put(&quot;supplierName&quot;,cc1);
+log.info(supplierName);
+
+String cn1 = vars.get(&quot;modifiedDate_&quot;+ i);
+String modifiedDate;
+vars.put(&quot;modifiedDate&quot;,cn1);
+log.info(modifiedDate);
+
+
+String cn1 = vars.get(&quot;agencyMOId_&quot;+ i);
+String agencyMOId;
+vars.put(&quot;agencyMOId&quot;,cn1);
+log.info(agencyMOId);
+
+
+
+String cb1 = vars.get(&quot;businessKey_&quot;+ i);
+String businessKey;
+vars.put(&quot;businessKey&quot;,cb1);
+log.info(businessKey);
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">PREAUTH_USER_ID</stringProp>
+                <stringProp name="Header.value">331050463</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Delete Supplier Mapping -Request-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&#xd;
+    {&#xd;
+        &quot;supplierBusinessKey&quot;: &quot;${businessKey}&quot;,&#xd;
+        &quot;sellerOrganisationMediaoceanId&quot;: &quot;${sellerOrgMOId}&quot;,&#xd;
+        &quot;agencyMediaoceanId&quot;: &quot;${agencyMOId}&quot;&#xd;
+    }&#xd;
+]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${putSupplierMapping}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">suppliers</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="440471696">&quot;agencyOwnerMediaoceanId&quot;:&quot;${agencyOwnerMOId}&quot;</stringProp>
+                <stringProp name="949694934">&quot;sellerOrganisationMediaoceanId&quot;:&quot;${sellerOrgMOId}&quot;</stringProp>
+                <stringProp name="-411827356">&quot;supplierCode&quot;:&quot;${supplierCode}&quot;</stringProp>
+                <stringProp name="1068114724">&quot;supplierName&quot;:&quot;${supplierName}&quot;</stringProp>
+                <stringProp name="1060260340">&quot;supplierBusinessKey&quot;:&quot;${businessKey}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>false</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <threadCounts>true</threadCounts>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Update Supplier Mapping -Request-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&#xd;
+    {&#xd;
+        &quot;supplierBusinessKey&quot;: &quot;${businessKey}&quot;,&#xd;
+        &quot;sellerOrganisationMediaoceanId&quot;: &quot;${sellerOrgMOId}&quot;,&#xd;
+        &quot;agencyMediaoceanId&quot;: &quot;${agencyMOId}&quot;&#xd;
+    }&#xd;
+]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${putSupplierMapping}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">suppliers</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="440471696">&quot;agencyOwnerMediaoceanId&quot;:&quot;${agencyOwnerMOId}&quot;</stringProp>
+                <stringProp name="949694934">&quot;sellerOrganisationMediaoceanId&quot;:&quot;${sellerOrgMOId}&quot;</stringProp>
+                <stringProp name="-411827356">&quot;supplierCode&quot;:&quot;${supplierCode}&quot;</stringProp>
+                <stringProp name="1068114724">&quot;supplierName&quot;:&quot;${supplierName}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
+              <boolProp name="ResultCollector.error_logging">false</boolProp>
+              <objProp>
+                <name>saveConfig</name>
+                <value class="SampleSaveConfiguration">
+                  <time>true</time>
+                  <latency>true</latency>
+                  <timestamp>true</timestamp>
+                  <success>true</success>
+                  <label>true</label>
+                  <code>true</code>
+                  <message>true</message>
+                  <threadName>true</threadName>
+                  <dataType>true</dataType>
+                  <encoding>false</encoding>
+                  <assertions>true</assertions>
+                  <subresults>true</subresults>
+                  <responseData>false</responseData>
+                  <samplerData>false</samplerData>
+                  <xml>false</xml>
+                  <fieldNames>false</fieldNames>
+                  <responseHeaders>false</responseHeaders>
+                  <requestHeaders>false</requestHeaders>
+                  <responseDataOnError>false</responseDataOnError>
+                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+                  <assertionsResultsToSave>0</assertionsResultsToSave>
+                  <bytes>true</bytes>
+                  <threadCounts>true</threadCounts>
+                </value>
+              </objProp>
+              <stringProp name="filename"></stringProp>
+            </ResultCollector>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="getSuplierMappingsByAgencyOwnerMediaoceanIdandAgencyMediaoceanId" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">500</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">200</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <longProp name="ThreadGroup.start_time">1545901987000</longProp>
+        <longProp name="ThreadGroup.end_time">1545901987000</longProp>
+      </ThreadGroup>
+      <hashTree>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="false">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="server" elementType="Argument">
+              <stringProp name="Argument.name">server</stringProp>
+              <stringProp name="Argument.value">prsmpdt</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="ListOfUsers" elementType="Argument">
+              <stringProp name="Argument.name">ListOfUsers</stringProp>
+              <stringProp name="Argument.value">ListOfUsers.csv</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="false">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">${ListOfUsers}</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames"></stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Headers" enabled="false">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">PREAUTH_USER_ID</stringProp>
+              <stringProp name="Header.value">${PREAUTH_USER_ID}</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">MO-SERVICE-NAME</stringProp>
+              <stringProp name="Header.value">JMETER</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getSupplierMappings" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="agencyMediaoceanId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${AGENCY_MEDIAOCEAN_ID}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">agencyMediaoceanId</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">prv.aos.${server}.dds.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/prisma-masterdata-service/internal/mappings/suppliers</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="RespTimeGraphVisualizer" testclass="ResultCollector" testname="Response Time Graph" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="getESuppliersByMediaoceanIds" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">100</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <longProp name="ThreadGroup.start_time">1545901987000</longProp>
+        <longProp name="ThreadGroup.end_time">1545901987000</longProp>
+      </ThreadGroup>
+      <hashTree>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="server" elementType="Argument">
+              <stringProp name="Argument.name">server</stringProp>
+              <stringProp name="Argument.value">prsmpdt</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">ListOfSellerMediaoceanIds_temp1.csv</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames"></stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Headers" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">MO-SERVICE-NAME</stringProp>
+              <stringProp name="Header.value">JMETER</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getESuppliersByMediaoceanIds" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">[&#xd;
+&quot;${SELLER_MEDIAOCEAN_ID}&quot;&#xd;
+]</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">prv.aos.${server}.dds.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/prisma-masterdata-service/internal/esupplier/byreq?agencyMediaoceanId=${AGENCY_MEDIAOCEAN_ID}</stringProp>
+          <stringProp name="HTTPSampler.method">PUT</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="RespTimeGraphVisualizer" testclass="ResultCollector" testname="Response Time Graph" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
+  </hashTree>
+</jmeterTestPlan>

@@ -1,0 +1,975 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Client APIs Group - for US System" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1524490690000</longProp>
+        <longProp name="ThreadGroup.end_time">1524490690000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">MO-SERVICE-NAME</stringProp>
+              <stringProp name="Header.value">sample-service-name</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="PRSMQA2 Photon MDM Connection" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">SELECT 1 FROM DUAL</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@NY-RAC-NPRDEE01.NA.RTDOM.NET/prsmqa2_d</stringProp>
+          <stringProp name="driver">oracle.jdbc.driver.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">PHOTON_MDM_RO</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">PHOTON_MDM_RO</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="PRSMPDT Photon MDM Connection" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">SELECT 1 FROM DUAL</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnMDM1</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@ny-rac-nprd1/PRSMPDT_D</stringProp>
+          <stringProp name="driver">oracle.jdbc.driver.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">PHOTON_MDM_RO</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">PHOTON_MDM_RO</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </Arguments>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="PDTserver" elementType="Argument">
+              <stringProp name="Argument.name">PDTserver</stringProp>
+              <stringProp name="Argument.value">prv.aos.prsmpdt.dds.net/</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query for getClientsByBusinessKeysUsingPUT" enabled="true">
+          <stringProp name="dataSource">dbconnMDM1</stringProp>
+          <stringProp name="query">SELECT CLIENT_CODE, CLIENT_NAME, AGENCY_OWNER_ID, MEDIA_CODE,SYSTEM_CODE,CURRENCY_CODE,BILL_CURRENCY,MEDIAOCEAN_ID FROM XMEDIA_CLIENT WHERE 
+BUY_SYSTEM=&apos;US&apos; AND AGENCY_ALPHA=&apos;SJ&apos;
+AND MEDIAOCEAN_ID IN (&apos;USSJNDLT&apos;,&apos;USSJOJCR&apos;,&apos;1C-AC0149456&apos;,&apos;USSJIEME&apos;,&apos;USSJILAS&apos;,&apos;USSJIDES&apos;,&apos;USSJLI19&apos;,&apos;USSJIGIS&apos;,&apos;USSJIIE1&apos;,&apos;1C-AF0147522&apos;,&apos;USSJSFTZ&apos;,&apos;USSJBAT2&apos;,&apos;USSJWAT2&apos;,&apos;USSJVAT2&apos;,&apos;USSJLMCK&apos;,&apos;USSJBMCK&apos;,&apos;USSJWMCK&apos;,&apos;USSJVMCK&apos;,&apos;USSJTMCK&apos;,&apos;USSJSMCK&apos;,&apos;USSJNMCK&apos;,&apos;USSJIMCK&apos;,&apos;USSJOMCK&apos;,&apos;USSJMMCK&apos;,&apos;USSJLYGA&apos;,&apos;1C-AV0141842&apos;,&apos;USSJLMEO&apos;,&apos;USSJSMEO&apos;,&apos;USSJIMEO&apos;,&apos;USSJICOL&apos;,&apos;1C-AN0140949&apos;,&apos;USSJITE3&apos;,&apos;USSJITE2&apos;,&apos;USSJITE1&apos;,&apos;USSJNKNP&apos;,&apos;USSJNDZC&apos;,&apos;USSJIMOS&apos;,&apos;USSJOPHT&apos;,&apos;USSJTTOR&apos;,&apos;USSJSTOR&apos;,&apos;USSJNTOR&apos;,&apos;USSJOTOR&apos;,&apos;USSJLTOR&apos;,&apos;USSJITOR&apos;,&apos;USSJMTOR&apos;,&apos;1C-AZ0137209&apos;,&apos;1C-AV0137115&apos;,&apos;1C-AR0136997&apos;,&apos;USSJISAB&apos;,&apos;USSJSSZZ&apos;,&apos;USSJOSZZ&apos;,&apos;USSJISZZ&apos;,&apos;USSJIDPC&apos;,&apos;USSJIZOP&apos;,&apos;USSJIBNB&apos;,&apos;USSJIKDS&apos;,&apos;USSJLKDS&apos;,&apos;USSJIIME&apos;,&apos;USSJTHMN&apos;,&apos;USSJNHMN&apos;,&apos;USSJMHMN&apos;,&apos;1C-AG0134681&apos;,&apos;1C-AG0134680&apos;,&apos;USSJMMBL&apos;,&apos;USSJIVOL&apos;,&apos;USSJIAE8&apos;,&apos;1C-AW0048568&apos;,&apos;USSJIMJH&apos;,&apos;1C-AS0000480&apos;,&apos;USSJILU&apos;,&apos;USSJIBEV&apos;,&apos;USSJIGY2&apos;,&apos;USSJIGP2&apos;,&apos;USSJIGYP&apos;,&apos;1C-AF65720&apos;,&apos;USSJIDWD&apos;,&apos;USSJIMCB&apos;,&apos;USSJIKRT&apos;,&apos;USSJIKRC&apos;,&apos;USSJISFA&apos;,&apos;USSJIDWN&apos;,&apos;USSJIDWC&apos;,&apos;USSJIDWP&apos;,&apos;USSJNHUL&apos;,&apos;USSJIHUL&apos;,&apos;USSJIKNP&apos;,&apos;1C-AN64581&apos;,&apos;USSJIAML&apos;,&apos;USSJODWO&apos;,&apos;USSJIJPO&apos;,&apos;1C-AO09160&apos;,&apos;USSJNOBB&apos;,&apos;1C-AI09007&apos;,&apos;USSJLAE1&apos;,&apos;USSJIDEB&apos;,&apos;USSJIDE1&apos;,&apos;1C-AZ08764&apos;,&apos;USSJMTAT&apos;,&apos;USSJIDHT&apos;,&apos;USSJIMDO&apos;)
+ ORDER BY CREATED_DATE DESC</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">CLIENT_CODE, CLIENT_NAME, AGENCY_OWNER_ID, MEDIA_CODE,SYSTEM_CODE,CURRENCY_CODE,BILL_CURRENCY,MEDIAOCEAN_ID</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">1000</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">1000</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler for getClientsByBusinessKeysUsingPUT" enabled="true">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+
+String cc1 = vars.get(&quot;CLIENT_CODE_&quot;+ i);
+String CLIENT_CODE;
+vars.put(&quot;CLIENT_CODE&quot;,cc1);
+log.info(CLIENT_CODE);
+
+String cn1 = vars.get(&quot;CLIENT_NAME_&quot;+ i);
+String CLIENT_NAME;
+vars.put(&quot;CLIENT_NAME&quot;,cn1);
+log.info(CLIENT_NAME);
+
+
+String ag1 = vars.get(&quot;AGENCY_OWNER_ID_&quot;+ i);
+String AGENCY_OWNER_ID;
+vars.put(&quot;AGENCY_OWNER_ID&quot;,ag1);
+log.info(AGENCY_OWNER_ID);
+
+
+String mc1 = vars.get(&quot;MEDIA_CODE_&quot;+ i);
+String MEDIA_CODE;
+vars.put(&quot;MEDIA_CODE&quot;,mc1);
+log.info(MEDIA_CODE);
+
+String sc1 = vars.get(&quot;SYSTEM_CODE_&quot;+ i);
+String SYSTEM_CODE;
+vars.put(&quot;SYSTEM_CODE&quot;,sc1);
+
+
+String cc2 = vars.get(&quot;CURRENCY_CODE_&quot;+ i);
+String CURRENCY_CODE;
+vars.put(&quot;CURRENCY_CODE&quot;,cc2);
+
+String bc1 = vars.get(&quot;BILL_CURRENCY_&quot;+ i);
+String BILL_CURRENCY;
+vars.put(&quot;BILL_CURRENCY&quot;,bc1);
+
+String mo1 = vars.get(&quot;MEDIAOCEAN_ID_&quot;+ i);
+String MEDIAOCEAN_ID;
+vars.put(&quot;MEDIAOCEAN_ID&quot;,mo1);
+log.info(MEDIAOCEAN_ID);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getClientsByBusinessKeysUsingPUT-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&quot;${MEDIAOCEAN_ID}&quot;]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${PDTserver}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">prisma-masterdata-service/internal/xmedia/client/businesskeys?agencyMediaoceanId=35-1-1M-3</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-1016495905">&quot;clientCode&quot;:&quot;${CLIENT_CODE}&quot;</stringProp>
+                <stringProp name="550623984">&quot;name&quot;:&quot;${CLIENT_NAME}&quot;</stringProp>
+                <stringProp name="-1664707182">&quot;agencyOwnerId&quot;:${AGENCY_OWNER_ID}</stringProp>
+                <stringProp name="917651519">&quot;mediaCode&quot;:&quot;${MEDIA_CODE}&quot;</stringProp>
+                <stringProp name="123905375">&quot;systemCode&quot;:&quot;${SYSTEM_CODE}&quot;</stringProp>
+                <stringProp name="1068309855">&quot;currencyCode&quot;:&quot;${CURRENCY_CODE}&quot;</stringProp>
+                <stringProp name="1634515419">&quot;mediaoceanId&quot;:&quot;${MEDIAOCEAN_ID}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Client APIs Group - for UK System" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1524490690000</longProp>
+        <longProp name="ThreadGroup.end_time">1524490690000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">MO-SERVICE-NAME</stringProp>
+              <stringProp name="Header.value">sample-service-name</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="PRSMQA2 Photon MDM Connection" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">SELECT 1 FROM DUAL</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@NY-RAC-NPRDEE01.NA.RTDOM.NET/prsmqa2_d</stringProp>
+          <stringProp name="driver">oracle.jdbc.driver.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">PHOTON_MDM_RO</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">PHOTON_MDM_RO</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="PRSMPDT Photon MDM Connection" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">SELECT 1 FROM DUAL</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnMDM1</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@ny-rac-nprd1/PRSMPDT_D</stringProp>
+          <stringProp name="driver">oracle.jdbc.driver.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">PHOTON_MDM_RO</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">PHOTON_MDM_RO</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </Arguments>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="PDTserver" elementType="Argument">
+              <stringProp name="Argument.name">PDTserver</stringProp>
+              <stringProp name="Argument.value">prv.aos.prsmpdt.dds.net/</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query for getClientsByBusinessKeysUsingPUT" enabled="true">
+          <stringProp name="dataSource">dbconnMDM1</stringProp>
+          <stringProp name="query">SELECT CLIENT_CODE, CLIENT_NAME, AGENCY_OWNER_ID, MEDIA_CODE,SYSTEM_CODE,CURRENCY_CODE,BILL_CURRENCY,MEDIAOCEAN_ID FROM XMEDIA_CLIENT WHERE 
+BUY_SYSTEM=&apos;UK&apos; AND AGENCY_ALPHA=&apos;D1&apos;
+AND MEDIAOCEAN_ID IN (&apos;UK|D1|B|SDB&apos;,&apos;UK|D1|A|SDB&apos;,&apos;UK|D1|B|JS1&apos;,&apos;UK|D1|A|JS1&apos;,&apos;UK|D1|F|JS1&apos;,&apos;UK|D1|B|MOO&apos;,&apos;UK|D1|A|AYO&apos;,&apos;UK|D1|B|AYO&apos;,&apos;UK|D1|F|AYO&apos;,&apos;UK|D1|A|AAM&apos;,&apos;UK|D1|A|AAN&apos;,&apos;UK|D1|A|101&apos;,&apos;UK|D1|A|102&apos;,&apos;UK|D1|A|105&apos;,&apos;UK|D1|A|112&apos;,&apos;UK|D1|A|119&apos;,&apos;UK|D1|A|123&apos;,&apos;UK|D1|A|139&apos;,&apos;UK|D1|A|320&apos;,&apos;UK|D1|A|7ST&apos;,&apos;UK|D1|A|909&apos;,&apos;UK|D1|A|989&apos;,&apos;UK|D1|A|A1P&apos;,&apos;UK|D1|A|A2P&apos;,&apos;UK|D1|A|A3P&apos;,&apos;UK|D1|A|A40&apos;,&apos;UK|D1|A|A4P&apos;,&apos;UK|D1|A|A5P&apos;,&apos;UK|D1|A|A6P&apos;,&apos;UK|D1|A|A7P&apos;,&apos;UK|D1|A|A85&apos;,&apos;UK|D1|A|A8P&apos;,&apos;UK|D1|A|AA&apos;,&apos;UK|D1|A|AA2&apos;,&apos;UK|D1|A|AA3&apos;,&apos;UK|D1|A|AA4&apos;,&apos;UK|D1|A|AAA&apos;,&apos;UK|D1|A|AAB&apos;,&apos;UK|D1|A|AAC&apos;,&apos;UK|D1|A|AAE&apos;,&apos;UK|D1|A|AAF&apos;,&apos;UK|D1|A|AAH&apos;,&apos;UK|D1|A|AAI&apos;,&apos;UK|D1|A|AAL&apos;,&apos;UK|D1|A|AAQ&apos;,&apos;UK|D1|A|AB1&apos;,&apos;UK|D1|A|AB2&apos;,&apos;UK|D1|A|ABC&apos;,&apos;UK|D1|A|ABE&apos;,&apos;UK|D1|A|ABR&apos;,&apos;UK|D1|A|AC1&apos;,&apos;UK|D1|A|AC3&apos;,&apos;UK|D1|A|AC4&apos;,&apos;UK|D1|A|AC5&apos;,&apos;UK|D1|A|AC6&apos;,&apos;UK|D1|A|ACO&apos;,&apos;UK|D1|A|ACY&apos;,&apos;UK|D1|A|ADE&apos;,&apos;UK|D1|A|ADH&apos;,&apos;UK|D1|A|ADJ&apos;,&apos;UK|D1|A|ADS&apos;,&apos;UK|D1|A|AFF&apos;,&apos;UK|D1|A|AGS&apos;,&apos;UK|D1|A|AIB&apos;,&apos;UK|D1|A|AIE&apos;,&apos;UK|D1|A|AIF&apos;,&apos;UK|D1|A|AJC&apos;,&apos;UK|D1|A|AJS&apos;,&apos;UK|D1|A|AMI&apos;,&apos;UK|D1|A|AMS&apos;,&apos;UK|D1|A|AND&apos;,&apos;UK|D1|A|APL&apos;,&apos;UK|D1|A|APP&apos;,&apos;UK|D1|A|ARR&apos;,&apos;UK|D1|A|AUS&apos;,&apos;UK|D1|A|AXS&apos;,&apos;UK|D1|A|B70&apos;,&apos;UK|D1|A|BAB&apos;,&apos;UK|D1|A|BAL&apos;,&apos;UK|D1|A|BAS&apos;,&apos;UK|D1|A|BEE&apos;,&apos;UK|D1|A|BEY&apos;,&apos;UK|D1|A|BH.&apos;,&apos;UK|D1|A|BHM&apos;,&apos;UK|D1|A|BHN&apos;,&apos;UK|D1|A|BIB&apos;,&apos;UK|D1|A|BIR&apos;,&apos;UK|D1|A|BIS&apos;,&apos;UK|D1|A|BIT&apos;,&apos;UK|D1|A|BOL&apos;,&apos;UK|D1|A|BOR&apos;,&apos;UK|D1|A|BR1&apos;,&apos;UK|D1|A|BR2&apos;,&apos;UK|D1|A|BR3&apos;,&apos;UK|D1|A|BSC&apos;,&apos;UK|D1|A|BUG&apos;,&apos;UK|D1|A|CAG&apos;,&apos;UK|D1|A|CAS&apos;,&apos;UK|D1|A|CB.&apos;,&apos;UK|D1|A|CFC&apos;,&apos;UK|D1|A|CJA&apos;,&apos;UK|D1|A|COM&apos;,&apos;UK|D1|A|CRE&apos;,&apos;UK|D1|A|CRO&apos;,&apos;UK|D1|A|DAM&apos;,&apos;UK|D1|A|DBL&apos;,&apos;UK|D1|A|DEB&apos;,&apos;UK|D1|A|DEL&apos;,&apos;UK|D1|A|DEP&apos;,&apos;UK|D1|A|DEV&apos;,&apos;UK|D1|A|DFH&apos;,&apos;UK|D1|A|DGL&apos;,&apos;UK|D1|A|DGS&apos;,&apos;UK|D1|A|DGT&apos;,&apos;UK|D1|A|DGX&apos;,&apos;UK|D1|A|DHA&apos;,&apos;UK|D1|A|DLR&apos;,&apos;UK|D1|A|DMS&apos;,&apos;UK|D1|A|DOG&apos;,&apos;UK|D1|A|DOH&apos;,&apos;UK|D1|A|DOT&apos;,&apos;UK|D1|A|DOV&apos;,&apos;UK|D1|A|DOY&apos;,&apos;UK|D1|A|DP1&apos;,&apos;UK|D1|A|DRV&apos;,&apos;UK|D1|A|DSB&apos;,&apos;UK|D1|A|DTS&apos;,&apos;UK|D1|A|DUD&apos;,&apos;UK|D1|A|DUM&apos;,&apos;UK|D1|A|DW1&apos;,&apos;UK|D1|A|DW2&apos;,&apos;UK|D1|A|DZ1&apos;,&apos;UK|D1|A|ECL&apos;,&apos;UK|D1|A|EDW&apos;,&apos;UK|D1|A|ELI&apos;,&apos;UK|D1|A|F01&apos;,&apos;UK|D1|A|FAR&apos;,&apos;UK|D1|A|FC2&apos;,&apos;UK|D1|A|FCB&apos;,&apos;UK|D1|A|FKV&apos;,&apos;UK|D1|A|FOR&apos;,&apos;UK|D1|A|FOX&apos;,&apos;UK|D1|A|G01&apos;,&apos;UK|D1|A|G89&apos;,&apos;UK|D1|A|GAF&apos;,&apos;UK|D1|A|GE1&apos;,&apos;UK|D1|A|GEM&apos;,&apos;UK|D1|A|GER&apos;,&apos;UK|D1|A|GI1&apos;,&apos;UK|D1|A|GJ1&apos;,&apos;UK|D1|A|GLH&apos;,&apos;UK|D1|A|GOG&apos;,&apos;UK|D1|A|GOR&apos;,&apos;UK|D1|A|GRB&apos;,&apos;UK|D1|A|GRT&apos;,&apos;UK|D1|A|GS8&apos;,&apos;UK|D1|A|GSA&apos;,&apos;UK|D1|A|GSC&apos;,&apos;UK|D1|A|GSD&apos;,&apos;UK|D1|A|GSE&apos;,&apos;UK|D1|A|GSH&apos;,&apos;UK|D1|A|GSL&apos;,&apos;UK|D1|A|GSM&apos;,&apos;UK|D1|A|GSZ&apos;,&apos;UK|D1|A|GTA&apos;,&apos;UK|D1|A|GTB&apos;,&apos;UK|D1|A|GUG&apos;,&apos;UK|D1|A|HAM&apos;,&apos;UK|D1|A|HD5&apos;,&apos;UK|D1|A|HD8&apos;,&apos;UK|D1|A|HD9&apos;,&apos;UK|D1|A|HEX&apos;,&apos;UK|D1|A|HFC&apos;,&apos;UK|D1|A|HHH&apos;,&apos;UK|D1|A|HMG&apos;,&apos;UK|D1|A|HNZ&apos;,&apos;UK|D1|A|HUM&apos;,&apos;UK|D1|A|IMI&apos;,&apos;UK|D1|A|IMP&apos;,&apos;UK|D1|A|ITC&apos;,&apos;UK|D1|A|J1J&apos;,&apos;UK|D1|A|J20&apos;,&apos;UK|D1|A|J21&apos;,&apos;UK|D1|A|J2J&apos;,&apos;UK|D1|A|J3J&apos;,&apos;UK|D1|A|JAG&apos;,&apos;UK|D1|A|JAO&apos;,&apos;UK|D1|A|JBB&apos;,&apos;UK|D1|A|JBX&apos;,&apos;UK|D1|A|JH1&apos;,&apos;UK|D1|A|JI1&apos;,&apos;UK|D1|A|JKG&apos;,&apos;UK|D1|A|JOH&apos;,&apos;UK|D1|A|JOL&apos;,&apos;UK|D1|A|JPL&apos;,&apos;UK|D1|A|JSH&apos;,&apos;UK|D1|A|JUS&apos;,&apos;UK|D1|A|KAD&apos;,&apos;UK|D1|A|KDP&apos;,&apos;UK|D1|A|KDT&apos;,&apos;UK|D1|A|KES&apos;,&apos;UK|D1|A|KKK&apos;,&apos;UK|D1|A|KM1&apos;,&apos;UK|D1|A|KMC&apos;,&apos;UK|D1|A|KOL&apos;,&apos;UK|D1|A|LOC&apos;,&apos;UK|D1|A|LOP&apos;,&apos;UK|D1|A|LOT&apos;,&apos;UK|D1|A|LPM&apos;,&apos;UK|D1|A|LRL&apos;,&apos;UK|D1|A|LUC&apos;,&apos;UK|D1|A|LUF&apos;,&apos;UK|D1|A|MA1&apos;,&apos;UK|D1|A|MA3&apos;,&apos;UK|D1|A|MAF&apos;,&apos;UK|D1|A|MAI&apos;,&apos;UK|D1|A|MAT&apos;,&apos;UK|D1|A|MAV&apos;,&apos;UK|D1|A|MBR&apos;,&apos;UK|D1|A|MC3&apos;,&apos;UK|D1|A|MDO&apos;,&apos;UK|D1|A|ME1&apos;,&apos;UK|D1|A|MGA&apos;,&apos;UK|D1|A|MI1&apos;,&apos;UK|D1|A|MI2&apos;,&apos;UK|D1|A|MI3&apos;,&apos;UK|D1|A|MI4&apos;,&apos;UK|D1|A|MI5&apos;,&apos;UK|D1|A|MI6&apos;,&apos;UK|D1|A|MI7&apos;,&apos;UK|D1|A|MI8&apos;,&apos;UK|D1|A|MIN&apos;,&apos;UK|D1|A|MIS&apos;,&apos;UK|D1|A|MM1&apos;,&apos;UK|D1|A|MNX&apos;,&apos;UK|D1|A|MOA&apos;,&apos;UK|D1|A|MOG&apos;,&apos;UK|D1|A|MOM&apos;,&apos;UK|D1|A|MOR&apos;,&apos;UK|D1|A|MTC&apos;,&apos;UK|D1|A|N01&apos;,&apos;UK|D1|A|NAD&apos;,&apos;UK|D1|A|NIA&apos;,&apos;UK|D1|A|NNP&apos;,&apos;UK|D1|A|NRA&apos;,&apos;UK|D1|A|NWL&apos;,&apos;UK|D1|A|ODC&apos;,&apos;UK|D1|A|OER&apos;,&apos;UK|D1|A|OGI&apos;,&apos;UK|D1|A|P10&apos;,&apos;UK|D1|A|P24&apos;,&apos;UK|D1|A|P25&apos;,&apos;UK|D1|A|P75&apos;,&apos;UK|D1|A|P7A&apos;,&apos;UK|D1|A|PAS&apos;,&apos;UK|D1|A|PCB&apos;,&apos;UK|D1|A|PET&apos;,&apos;UK|D1|A|PGN&apos;,&apos;UK|D1|A|PM1&apos;,&apos;UK|D1|A|PMM&apos;,&apos;UK|D1|A|PPA&apos;,&apos;UK|D1|A|PRA&apos;,&apos;UK|D1|A|PRB&apos;,&apos;UK|D1|A|PUB&apos;,&apos;UK|D1|A|Q01&apos;,&apos;UK|D1|A|QAZ&apos;,&apos;UK|D1|A|QBS&apos;,&apos;UK|D1|A|R12&apos;,&apos;UK|D1|A|RAI&apos;,&apos;UK|D1|A|RBE&apos;,&apos;UK|D1|A|RET&apos;,&apos;UK|D1|A|ROA&apos;,&apos;UK|D1|A|S51&apos;,&apos;UK|D1|A|SA1&apos;,&apos;UK|D1|A|SAD&apos;,&apos;UK|D1|A|SAL&apos;,&apos;UK|D1|A|SAN&apos;,&apos;UK|D1|A|SC1&apos;,&apos;UK|D1|A|SD3&apos;,&apos;UK|D1|A|SDA&apos;,&apos;UK|D1|A|SF1&apos;,&apos;UK|D1|A|SHC&apos;,&apos;UK|D1|A|SHI&apos;,&apos;UK|D1|A|SHJ&apos;,&apos;UK|D1|A|SHK&apos;,&apos;UK|D1|A|SHL&apos;,&apos;UK|D1|A|SHM&apos;,&apos;UK|D1|A|SHT&apos;,&apos;UK|D1|A|SHV&apos;,&apos;UK|D1|A|SHY&apos;,&apos;UK|D1|A|SO1&apos;,&apos;UK|D1|A|SO2&apos;,&apos;UK|D1|A|SPI&apos;,&apos;UK|D1|A|SPW&apos;,&apos;UK|D1|A|SS1&apos;,&apos;UK|D1|A|STO&apos;,&apos;UK|D1|A|SU1&apos;,&apos;UK|D1|A|SWG&apos;,&apos;UK|D1|A|T04&apos;,&apos;UK|D1|A|T21&apos;,&apos;UK|D1|A|TAR&apos;,&apos;UK|D1|A|TCF&apos;,&apos;UK|D1|A|TEA&apos;,&apos;UK|D1|A|TEK&apos;,&apos;UK|D1|A|TES&apos;,&apos;UK|D1|A|TFE&apos;,&apos;UK|D1|A|TFR&apos;,&apos;UK|D1|A|TIF&apos;,&apos;UK|D1|A|TIR&apos;,&apos;UK|D1|A|TJC&apos;,&apos;UK|D1|A|TKL&apos;,&apos;UK|D1|A|TM1&apos;,&apos;UK|D1|A|TM2&apos;,&apos;UK|D1|A|TM3&apos;,&apos;UK|D1|A|TMD&apos;,&apos;UK|D1|A|TMG&apos;,&apos;UK|D1|A|TMH&apos;,&apos;UK|D1|A|TMI&apos;,&apos;UK|D1|A|TTQ&apos;,&apos;UK|D1|A|UBH&apos;,&apos;UK|D1|A|UGG&apos;,&apos;UK|D1|A|UN1&apos;,&apos;UK|D1|A|UN2&apos;,&apos;UK|D1|A|VAT&apos;,&apos;UK|D1|A|VIN&apos;,&apos;UK|D1|A|VOD&apos;,&apos;UK|D1|A|VOT&apos;,&apos;UK|D1|A|VXP&apos;,&apos;UK|D1|A|WAD&apos;,&apos;UK|D1|A|WAQ&apos;,&apos;UK|D1|A|WEC&apos;,&apos;UK|D1|A|WEK&apos;,&apos;UK|D1|A|WOL&apos;,&apos;UK|D1|A|WOS&apos;,&apos;UK|D1|A|WOT&apos;,&apos;UK|D1|A|X01&apos;,&apos;UK|D1|A|X79&apos;,&apos;UK|D1|A|X90&apos;,&apos;UK|D1|A|X91&apos;,&apos;UK|D1|A|XKE&apos;,&apos;UK|D1|A|XSS&apos;,&apos;UK|D1|A|XYZ&apos;,&apos;UK|D1|A|XZX&apos;,&apos;UK|D1|A|YZS&apos;,&apos;UK|D1|A|YZZ&apos;,&apos;UK|D1|A|Z11&apos;,&apos;UK|D1|A|ZAB&apos;,&apos;UK|D1|A|ZAT&apos;,&apos;UK|D1|A|ZBA&apos;,&apos;UK|D1|A|ZBC&apos;,&apos;UK|D1|A|ZBD&apos;,&apos;UK|D1|A|ZD1&apos;,&apos;UK|D1|A|ZD2&apos;,&apos;UK|D1|A|ZD8&apos;,&apos;UK|D1|A|ZDG&apos;,&apos;UK|D1|A|ZDS&apos;,&apos;UK|D1|A|ZDU&apos;,&apos;UK|D1|A|ZDW&apos;,&apos;UK|D1|A|ZEB&apos;,&apos;UK|D1|A|ZEN&apos;,&apos;UK|D1|A|ZQW&apos;,&apos;UK|D1|A|ZT1&apos;,&apos;UK|D1|A|ZTT&apos;,&apos;UK|D1|A|ZZY&apos;,&apos;UK|D1|B|101&apos;,&apos;UK|D1|B|102&apos;,&apos;UK|D1|B|105&apos;,&apos;UK|D1|B|111&apos;,&apos;UK|D1|B|112&apos;,&apos;UK|D1|B|119&apos;,&apos;UK|D1|B|139&apos;,&apos;UK|D1|B|222&apos;,&apos;UK|D1|B|320&apos;,&apos;UK|D1|B|909&apos;,&apos;UK|D1|B|989&apos;,&apos;UK|D1|B|A1P&apos;,&apos;UK|D1|B|A2P&apos;,&apos;UK|D1|B|A3P&apos;,&apos;UK|D1|B|A40&apos;,&apos;UK|D1|B|A4P&apos;,&apos;UK|D1|B|A5P&apos;,&apos;UK|D1|B|A6P&apos;,&apos;UK|D1|B|A7P&apos;,&apos;UK|D1|B|A85&apos;,&apos;UK|D1|B|A8P&apos;,&apos;UK|D1|B|AA&apos;,&apos;UK|D1|B|AA2&apos;,&apos;UK|D1|B|AA3&apos;,&apos;UK|D1|B|AA4&apos;,&apos;UK|D1|B|AAA&apos;,&apos;UK|D1|B|AAB&apos;,&apos;UK|D1|B|AAC&apos;,&apos;UK|D1|B|AAE&apos;,&apos;UK|D1|B|AAF&apos;,&apos;UK|D1|B|AAH&apos;,&apos;UK|D1|B|AAI&apos;,&apos;UK|D1|B|AAL&apos;,&apos;UK|D1|B|AAQ&apos;,&apos;UK|D1|B|AB1&apos;,&apos;UK|D1|B|AB2&apos;,&apos;UK|D1|B|ABC&apos;,&apos;UK|D1|B|ABE&apos;,&apos;UK|D1|B|ABR&apos;,&apos;UK|D1|B|AC1&apos;,&apos;UK|D1|B|AC3&apos;,&apos;UK|D1|B|AC4&apos;,&apos;UK|D1|B|AC5&apos;,&apos;UK|D1|B|AC6&apos;,&apos;UK|D1|B|ACO&apos;,&apos;UK|D1|B|ACY&apos;,&apos;UK|D1|B|ADE&apos;,&apos;UK|D1|B|ADH&apos;,&apos;UK|D1|B|ADJ&apos;,&apos;UK|D1|B|ADS&apos;,&apos;UK|D1|B|AFF&apos;,&apos;UK|D1|B|AGS&apos;,&apos;UK|D1|B|AIB&apos;,&apos;UK|D1|B|AIE&apos;,&apos;UK|D1|B|AIF&apos;,&apos;UK|D1|B|AJC&apos;,&apos;UK|D1|B|AJS&apos;,&apos;UK|D1|B|AKL&apos;,&apos;UK|D1|B|ALO&apos;,&apos;UK|D1|B|AMI&apos;,&apos;UK|D1|B|AMS&apos;,&apos;UK|D1|B|AND&apos;,&apos;UK|D1|B|APL&apos;,&apos;UK|D1|B|APP&apos;,&apos;UK|D1|B|ARR&apos;,&apos;UK|D1|B|AUS&apos;,&apos;UK|D1|B|AXS&apos;,&apos;UK|D1|B|B70&apos;,&apos;UK|D1|B|BAB&apos;,&apos;UK|D1|B|BAL&apos;,&apos;UK|D1|B|BAS&apos;,&apos;UK|D1|B|BEE&apos;,&apos;UK|D1|B|BEY&apos;,&apos;UK|D1|B|BH.&apos;,&apos;UK|D1|B|BHM&apos;,&apos;UK|D1|B|BHN&apos;,&apos;UK|D1|B|BIB&apos;,&apos;UK|D1|B|BIR&apos;,&apos;UK|D1|B|BIS&apos;,&apos;UK|D1|B|BIT&apos;,&apos;UK|D1|B|BOL&apos;,&apos;UK|D1|B|BOR&apos;,&apos;UK|D1|B|BOV&apos;,&apos;UK|D1|B|BR1&apos;,&apos;UK|D1|B|BR2&apos;,&apos;UK|D1|B|BR3&apos;,&apos;UK|D1|B|BRE&apos;,&apos;UK|D1|B|BSC&apos;,&apos;UK|D1|B|BUG&apos;,&apos;UK|D1|B|C01&apos;,&apos;UK|D1|B|CAD&apos;,&apos;UK|D1|B|CAG&apos;,&apos;UK|D1|B|CAJ&apos;,&apos;UK|D1|B|CAS&apos;,&apos;UK|D1|B|CB.&apos;,&apos;UK|D1|B|CFC&apos;,&apos;UK|D1|B|CJA&apos;,&apos;UK|D1|B|COM&apos;,&apos;UK|D1|B|CRE&apos;,&apos;UK|D1|B|CRO&apos;,&apos;UK|D1|B|CUZ&apos;,&apos;UK|D1|B|DBL&apos;,&apos;UK|D1|B|DEB&apos;,&apos;UK|D1|B|DEL&apos;,&apos;UK|D1|B|DEP&apos;,&apos;UK|D1|B|DEV&apos;,&apos;UK|D1|B|DFH&apos;,&apos;UK|D1|B|DGL&apos;,&apos;UK|D1|B|DGS&apos;,&apos;UK|D1|B|DGT&apos;,&apos;UK|D1|B|DGX&apos;,&apos;UK|D1|B|DHA&apos;,&apos;UK|D1|B|DIN&apos;,&apos;UK|D1|B|DJA&apos;,&apos;UK|D1|B|DLR&apos;,&apos;UK|D1|B|DM2&apos;,&apos;UK|D1|B|DM3&apos;,&apos;UK|D1|B|DMC&apos;,&apos;UK|D1|B|DME&apos;,&apos;UK|D1|B|DMS&apos;,&apos;UK|D1|B|DOD&apos;,&apos;UK|D1|B|DOG&apos;,&apos;UK|D1|B|DOH&apos;,&apos;UK|D1|B|DOT&apos;,&apos;UK|D1|B|DOV&apos;,&apos;UK|D1|B|DOY&apos;,&apos;UK|D1|B|DP1&apos;,&apos;UK|D1|B|DRV&apos;,&apos;UK|D1|B|DSB&apos;,&apos;UK|D1|B|DTS&apos;,&apos;UK|D1|B|DUD&apos;,&apos;UK|D1|B|DUM&apos;,&apos;UK|D1|B|DW1&apos;,&apos;UK|D1|B|DW2&apos;,&apos;UK|D1|B|DZ1&apos;,&apos;UK|D1|B|ECL&apos;,&apos;UK|D1|B|EDW&apos;,&apos;UK|D1|B|ELI&apos;,&apos;UK|D1|B|ERI&apos;,&apos;UK|D1|B|F01&apos;,&apos;UK|D1|B|FAR&apos;,&apos;UK|D1|B|FC2&apos;,&apos;UK|D1|B|FCB&apos;,&apos;UK|D1|B|FKV&apos;,&apos;UK|D1|B|FOR&apos;,&apos;UK|D1|B|FOX&apos;,&apos;UK|D1|B|G01&apos;,&apos;UK|D1|B|G89&apos;,&apos;UK|D1|B|GAF&apos;,&apos;UK|D1|B|GE1&apos;,&apos;UK|D1|B|GEM&apos;,&apos;UK|D1|B|GER&apos;,&apos;UK|D1|B|GGS&apos;,&apos;UK|D1|B|GI1&apos;,&apos;UK|D1|B|GJ1&apos;,&apos;UK|D1|B|GLH&apos;,&apos;UK|D1|B|GOG&apos;,&apos;UK|D1|B|GOR&apos;,&apos;UK|D1|B|GR1&apos;,&apos;UK|D1|B|GRB&apos;,&apos;UK|D1|B|GRT&apos;,&apos;UK|D1|B|GS8&apos;,&apos;UK|D1|B|GSA&apos;,&apos;UK|D1|B|GSB&apos;,&apos;UK|D1|B|GSC&apos;,&apos;UK|D1|B|GSD&apos;,&apos;UK|D1|B|GSE&apos;,&apos;UK|D1|B|GSH&apos;,&apos;UK|D1|B|GSL&apos;,&apos;UK|D1|B|GSM&apos;,&apos;UK|D1|B|GSV&apos;,&apos;UK|D1|B|GSW&apos;,&apos;UK|D1|B|GSZ&apos;,&apos;UK|D1|B|GTA&apos;,&apos;UK|D1|B|GTB&apos;,&apos;UK|D1|B|GTM&apos;,&apos;UK|D1|B|GUG&apos;,&apos;UK|D1|B|H07&apos;,&apos;UK|D1|B|HAM&apos;,&apos;UK|D1|B|HD5&apos;,&apos;UK|D1|B|HD8&apos;,&apos;UK|D1|B|HD9&apos;,&apos;UK|D1|B|HEX&apos;,&apos;UK|D1|B|HFC&apos;,&apos;UK|D1|B|HGC&apos;,&apos;UK|D1|B|HHH&apos;,&apos;UK|D1|B|HMG&apos;,&apos;UK|D1|B|HNZ&apos;,&apos;UK|D1|B|HUM&apos;,&apos;UK|D1|B|IMI&apos;,&apos;UK|D1|B|IMP&apos;,&apos;UK|D1|B|ITC&apos;,&apos;UK|D1|B|J1J&apos;,&apos;UK|D1|B|J20&apos;,&apos;UK|D1|B|J21&apos;,&apos;UK|D1|B|J2J&apos;,&apos;UK|D1|B|J3J&apos;,&apos;UK|D1|B|JAG&apos;,&apos;UK|D1|B|JAO&apos;,&apos;UK|D1|B|JBB&apos;,&apos;UK|D1|B|JBX&apos;,&apos;UK|D1|B|JH1&apos;,&apos;UK|D1|B|JI1&apos;,&apos;UK|D1|B|JKG&apos;,&apos;UK|D1|B|JOH&apos;,&apos;UK|D1|B|JOL&apos;,&apos;UK|D1|B|JPL&apos;,&apos;UK|D1|B|JSH&apos;,&apos;UK|D1|B|JUS&apos;,&apos;UK|D1|B|KDP&apos;,&apos;UK|D1|B|KDT&apos;,&apos;UK|D1|B|KES&apos;,&apos;UK|D1|B|KKK&apos;,&apos;UK|D1|B|KM1&apos;,&apos;UK|D1|B|KMC&apos;,&apos;UK|D1|B|KOL&apos;,&apos;UK|D1|B|LAW&apos;,&apos;UK|D1|B|LCG&apos;,&apos;UK|D1|B|LEV&apos;,&apos;UK|D1|B|LOC&apos;,&apos;UK|D1|B|LOP&apos;,&apos;UK|D1|B|LOT&apos;,&apos;UK|D1|B|LPM&apos;,&apos;UK|D1|B|LRL&apos;,&apos;UK|D1|B|LUC&apos;,&apos;UK|D1|B|LUF&apos;,&apos;UK|D1|B|M50&apos;,&apos;UK|D1|B|MA1&apos;,&apos;UK|D1|B|MA3&apos;,&apos;UK|D1|B|MAF&apos;,&apos;UK|D1|B|MAI&apos;,&apos;UK|D1|B|MAT&apos;,&apos;UK|D1|B|MAV&apos;,&apos;UK|D1|B|MBR&apos;,&apos;UK|D1|B|MC3&apos;,&apos;UK|D1|B|MDO&apos;,&apos;UK|D1|B|ME1&apos;,&apos;UK|D1|B|MGA&apos;,&apos;UK|D1|B|MIS&apos;,&apos;UK|D1|B|MJR&apos;,&apos;UK|D1|B|MM1&apos;,&apos;UK|D1|B|MNX&apos;,&apos;UK|D1|B|MOA&apos;,&apos;UK|D1|B|MOG&apos;,&apos;UK|D1|B|MOM&apos;,&apos;UK|D1|B|MOR&apos;,&apos;UK|D1|B|MTC&apos;,&apos;UK|D1|B|N01&apos;,&apos;UK|D1|B|NAD&apos;,&apos;UK|D1|B|NET&apos;,&apos;UK|D1|B|NIA&apos;,&apos;UK|D1|B|NRA&apos;,&apos;UK|D1|B|NWL&apos;,&apos;UK|D1|B|ODC&apos;,&apos;UK|D1|B|OER&apos;,&apos;UK|D1|B|OGI&apos;,&apos;UK|D1|B|P10&apos;,&apos;UK|D1|B|P24&apos;,&apos;UK|D1|B|P25&apos;,&apos;UK|D1|B|P75&apos;,&apos;UK|D1|B|P7A&apos;,&apos;UK|D1|B|PAS&apos;,&apos;UK|D1|B|PCB&apos;,&apos;UK|D1|B|PET&apos;,&apos;UK|D1|B|PGN&apos;,&apos;UK|D1|B|PM1&apos;,&apos;UK|D1|B|PPA&apos;,&apos;UK|D1|B|PRA&apos;,&apos;UK|D1|B|PRB&apos;,&apos;UK|D1|B|PUB&apos;,&apos;UK|D1|B|Q01&apos;,&apos;UK|D1|B|QAZ&apos;,&apos;UK|D1|B|QBS&apos;,&apos;UK|D1|B|R12&apos;,&apos;UK|D1|B|RAI&apos;,&apos;UK|D1|B|RBE&apos;,&apos;UK|D1|B|REA&apos;,&apos;UK|D1|B|RET&apos;,&apos;UK|D1|B|ROA&apos;,&apos;UK|D1|B|S51&apos;,&apos;UK|D1|B|S76&apos;,&apos;UK|D1|B|SA1&apos;,&apos;UK|D1|B|SAD&apos;,&apos;UK|D1|B|SAF&apos;,&apos;UK|D1|B|SAL&apos;,&apos;UK|D1|B|SAN&apos;,&apos;UK|D1|B|SC1&apos;,&apos;UK|D1|B|SD3&apos;,&apos;UK|D1|B|SF1&apos;,&apos;UK|D1|B|SHC&apos;,&apos;UK|D1|B|SHI&apos;,&apos;UK|D1|B|SHJ&apos;,&apos;UK|D1|B|SHK&apos;,&apos;UK|D1|B|SHL&apos;,&apos;UK|D1|B|SHM&apos;,&apos;UK|D1|B|SHT&apos;,&apos;UK|D1|B|SHV&apos;,&apos;UK|D1|B|SHY&apos;,&apos;UK|D1|B|SO1&apos;,&apos;UK|D1|B|SO2&apos;,&apos;UK|D1|B|SPI&apos;,&apos;UK|D1|B|SPW&apos;,&apos;UK|D1|B|SRA&apos;,&apos;UK|D1|B|SS1&apos;,&apos;UK|D1|B|SU1&apos;,&apos;UK|D1|B|SWG&apos;,&apos;UK|D1|B|T04&apos;,&apos;UK|D1|B|T21&apos;,&apos;UK|D1|B|T23&apos;,&apos;UK|D1|B|TCF&apos;,&apos;UK|D1|B|TEA&apos;,&apos;UK|D1|B|TEK&apos;,&apos;UK|D1|B|TES&apos;,&apos;UK|D1|B|TFE&apos;,&apos;UK|D1|B|TFR&apos;,&apos;UK|D1|B|TIF&apos;,&apos;UK|D1|B|TIR&apos;,&apos;UK|D1|B|TJC&apos;,&apos;UK|D1|B|TKL&apos;,&apos;UK|D1|B|TM1&apos;,&apos;UK|D1|B|TM2&apos;,&apos;UK|D1|B|TM3&apos;,&apos;UK|D1|B|TMD&apos;,&apos;UK|D1|B|TMG&apos;,&apos;UK|D1|B|TMH&apos;,&apos;UK|D1|B|TMI&apos;,&apos;UK|D1|B|TTQ&apos;,&apos;UK|D1|B|UBH&apos;,&apos;UK|D1|B|UGG&apos;,&apos;UK|D1|B|UN1&apos;,&apos;UK|D1|B|UN2&apos;,&apos;UK|D1|B|VAT&apos;,&apos;UK|D1|B|VIN&apos;,&apos;UK|D1|B|VOD&apos;,&apos;UK|D1|B|VOT&apos;,&apos;UK|D1|B|VXP&apos;,&apos;UK|D1|B|WAD&apos;,&apos;UK|D1|B|WAQ&apos;,&apos;UK|D1|B|WEC&apos;,&apos;UK|D1|B|WEK&apos;,&apos;UK|D1|B|WOL&apos;,&apos;UK|D1|B|WOS&apos;,&apos;UK|D1|B|WOT&apos;,&apos;UK|D1|B|X01&apos;,&apos;UK|D1|B|X79&apos;,&apos;UK|D1|B|X90&apos;,&apos;UK|D1|B|X91&apos;,&apos;UK|D1|B|XKE&apos;,&apos;UK|D1|B|XSS&apos;,&apos;UK|D1|B|XZX&apos;,&apos;UK|D1|B|YZS&apos;,&apos;UK|D1|B|YZZ&apos;,&apos;UK|D1|B|Z11&apos;,&apos;UK|D1|B|ZAB&apos;,&apos;UK|D1|B|ZAC&apos;,&apos;UK|D1|B|ZAT&apos;,&apos;UK|D1|B|ZBA&apos;,&apos;UK|D1|B|ZBC&apos;,&apos;UK|D1|B|ZBD&apos;,&apos;UK|D1|B|ZD1&apos;,&apos;UK|D1|B|ZD2&apos;,&apos;UK|D1|B|ZD8&apos;,&apos;UK|D1|B|ZDG&apos;,&apos;UK|D1|B|ZDS&apos;,&apos;UK|D1|B|ZDU&apos;,&apos;UK|D1|B|ZDW&apos;,&apos;UK|D1|B|ZEB&apos;,&apos;UK|D1|B|ZEN&apos;,&apos;UK|D1|B|ZER&apos;,&apos;UK|D1|B|ZIP&apos;,&apos;UK|D1|B|ZQW&apos;,&apos;UK|D1|B|ZT1&apos;,&apos;UK|D1|B|ZTT&apos;,&apos;UK|D1|B|ZZY&apos;,&apos;UK|D1|F|101&apos;,&apos;UK|D1|F|102&apos;,&apos;UK|D1|F|105&apos;,&apos;UK|D1|F|112&apos;,&apos;UK|D1|F|119&apos;,&apos;UK|D1|F|139&apos;,&apos;UK|D1|F|320&apos;,&apos;UK|D1|F|501&apos;,&apos;UK|D1|F|546&apos;,&apos;UK|D1|F|547&apos;,&apos;UK|D1|F|909&apos;,&apos;UK|D1|F|989&apos;,&apos;UK|D1|F|A1P&apos;,&apos;UK|D1|F|A2P&apos;,&apos;UK|D1|F|A3P&apos;,&apos;UK|D1|F|A40&apos;,&apos;UK|D1|F|A4P&apos;,&apos;UK|D1|F|A5P&apos;,&apos;UK|D1|F|A6P&apos;,&apos;UK|D1|F|A7P&apos;,&apos;UK|D1|F|A85&apos;,&apos;UK|D1|F|A8P&apos;,&apos;UK|D1|F|AA&apos;,&apos;UK|D1|F|AA2&apos;,&apos;UK|D1|F|AA3&apos;,&apos;UK|D1|F|AA4&apos;,&apos;UK|D1|F|AAA&apos;,&apos;UK|D1|F|AAB&apos;,&apos;UK|D1|F|AAC&apos;,&apos;UK|D1|F|AAE&apos;,&apos;UK|D1|F|AAF&apos;,&apos;UK|D1|F|AAH&apos;,&apos;UK|D1|F|AAI&apos;,&apos;UK|D1|F|AAL&apos;,&apos;UK|D1|F|AAQ&apos;,&apos;UK|D1|F|AB1&apos;,&apos;UK|D1|F|AB2&apos;,&apos;UK|D1|F|ABC&apos;,&apos;UK|D1|F|ABE&apos;,&apos;UK|D1|F|ABR&apos;,&apos;UK|D1|F|AC1&apos;,&apos;UK|D1|F|AC3&apos;,&apos;UK|D1|F|AC4&apos;,&apos;UK|D1|F|AC5&apos;,&apos;UK|D1|F|AC6&apos;,&apos;UK|D1|F|ACO&apos;,&apos;UK|D1|F|ACY&apos;,&apos;UK|D1|F|ADE&apos;,&apos;UK|D1|F|ADH&apos;,&apos;UK|D1|F|ADJ&apos;,&apos;UK|D1|F|ADS&apos;,&apos;UK|D1|F|AFF&apos;,&apos;UK|D1|F|AGS&apos;,&apos;UK|D1|F|AIB&apos;,&apos;UK|D1|F|AIE&apos;,&apos;UK|D1|F|AIF&apos;,&apos;UK|D1|F|AJC&apos;,&apos;UK|D1|F|AJS&apos;,&apos;UK|D1|F|AKL&apos;,&apos;UK|D1|F|AMI&apos;,&apos;UK|D1|F|AMS&apos;,&apos;UK|D1|F|AND&apos;,&apos;UK|D1|F|APL&apos;,&apos;UK|D1|F|APP&apos;,&apos;UK|D1|F|ARR&apos;,&apos;UK|D1|F|AUS&apos;,&apos;UK|D1|F|AXS&apos;,&apos;UK|D1|F|B70&apos;,&apos;UK|D1|F|BAB&apos;,&apos;UK|D1|F|BAL&apos;,&apos;UK|D1|F|BAS&apos;,&apos;UK|D1|F|BEE&apos;,&apos;UK|D1|F|BEV&apos;,&apos;UK|D1|F|BEY&apos;,&apos;UK|D1|F|BH.&apos;,&apos;UK|D1|F|BHM&apos;,&apos;UK|D1|F|BHN&apos;,&apos;UK|D1|F|BIB&apos;,&apos;UK|D1|F|BIR&apos;,&apos;UK|D1|F|BIS&apos;,&apos;UK|D1|F|BIT&apos;,&apos;UK|D1|F|BOL&apos;,&apos;UK|D1|F|BOR&apos;,&apos;UK|D1|F|BR1&apos;,&apos;UK|D1|F|BR2&apos;,&apos;UK|D1|F|BR3&apos;,&apos;UK|D1|F|BSC&apos;,&apos;UK|D1|F|BUG&apos;,&apos;UK|D1|F|CAG&apos;,&apos;UK|D1|F|CAS&apos;,&apos;UK|D1|F|CB.&apos;,&apos;UK|D1|F|CFC&apos;,&apos;UK|D1|F|CJA&apos;,&apos;UK|D1|F|COM&apos;,&apos;UK|D1|F|CRE&apos;,&apos;UK|D1|F|CRO&apos;,&apos;UK|D1|F|DBL&apos;,&apos;UK|D1|F|DEB&apos;,&apos;UK|D1|F|DEL&apos;,&apos;UK|D1|F|DEP&apos;,&apos;UK|D1|F|DEV&apos;,&apos;UK|D1|F|DFH&apos;,&apos;UK|D1|F|DGL&apos;,&apos;UK|D1|F|DGS&apos;,&apos;UK|D1|F|DGT&apos;,&apos;UK|D1|F|DGX&apos;,&apos;UK|D1|F|DHA&apos;,&apos;UK|D1|F|DLR&apos;,&apos;UK|D1|F|DMS&apos;,&apos;UK|D1|F|DOG&apos;,&apos;UK|D1|F|DOH&apos;,&apos;UK|D1|F|DOT&apos;,&apos;UK|D1|F|DOV&apos;,&apos;UK|D1|F|DOY&apos;,&apos;UK|D1|F|DP1&apos;,&apos;UK|D1|F|DRV&apos;,&apos;UK|D1|F|DSB&apos;,&apos;UK|D1|F|DTS&apos;,&apos;UK|D1|F|DUD&apos;,&apos;UK|D1|F|DUM&apos;,&apos;UK|D1|F|DW1&apos;,&apos;UK|D1|F|DW2&apos;,&apos;UK|D1|F|DZ1&apos;,&apos;UK|D1|F|ECL&apos;,&apos;UK|D1|F|EDW&apos;,&apos;UK|D1|F|ELI&apos;,&apos;UK|D1|F|F01&apos;,&apos;UK|D1|F|FAR&apos;,&apos;UK|D1|F|FC2&apos;,&apos;UK|D1|F|FCB&apos;,&apos;UK|D1|F|FKV&apos;,&apos;UK|D1|F|FOR&apos;,&apos;UK|D1|F|FOX&apos;,&apos;UK|D1|F|G01&apos;,&apos;UK|D1|F|G89&apos;,&apos;UK|D1|F|GAF&apos;,&apos;UK|D1|F|GAV&apos;,&apos;UK|D1|F|GE1&apos;,&apos;UK|D1|F|GEM&apos;,&apos;UK|D1|F|GER&apos;,&apos;UK|D1|F|GGS&apos;,&apos;UK|D1|F|GI1&apos;,&apos;UK|D1|F|GJ1&apos;,&apos;UK|D1|F|GLH&apos;,&apos;UK|D1|F|GOG&apos;,&apos;UK|D1|F|GOR&apos;,&apos;UK|D1|F|GR1&apos;,&apos;UK|D1|F|GRB&apos;,&apos;UK|D1|F|GRT&apos;,&apos;UK|D1|F|GS8&apos;,&apos;UK|D1|F|GSA&apos;,&apos;UK|D1|F|GSC&apos;,&apos;UK|D1|F|GSD&apos;,&apos;UK|D1|F|GSE&apos;,&apos;UK|D1|F|GSH&apos;,&apos;UK|D1|F|GSL&apos;,&apos;UK|D1|F|GSM&apos;,&apos;UK|D1|F|GSZ&apos;,&apos;UK|D1|F|GTA&apos;,&apos;UK|D1|F|GTB&apos;,&apos;UK|D1|F|GUG&apos;,&apos;UK|D1|F|HAM&apos;,&apos;UK|D1|F|HD5&apos;,&apos;UK|D1|F|HD8&apos;,&apos;UK|D1|F|HD9&apos;,&apos;UK|D1|F|HEX&apos;,&apos;UK|D1|F|HFC&apos;,&apos;UK|D1|F|HHH&apos;,&apos;UK|D1|F|HMG&apos;,&apos;UK|D1|F|HNZ&apos;,&apos;UK|D1|F|HUM&apos;,&apos;UK|D1|F|IMI&apos;,&apos;UK|D1|F|IMP&apos;,&apos;UK|D1|F|ITC&apos;,&apos;UK|D1|F|J1J&apos;,&apos;UK|D1|F|J20&apos;,&apos;UK|D1|F|J21&apos;,&apos;UK|D1|F|J2J&apos;,&apos;UK|D1|F|J3J&apos;,&apos;UK|D1|F|JAG&apos;,&apos;UK|D1|F|JAO&apos;,&apos;UK|D1|F|JAP&apos;,&apos;UK|D1|F|JBB&apos;,&apos;UK|D1|F|JBX&apos;,&apos;UK|D1|F|JH1&apos;,&apos;UK|D1|F|JI1&apos;,&apos;UK|D1|F|JKG&apos;,&apos;UK|D1|F|JOH&apos;,&apos;UK|D1|F|JOL&apos;,&apos;UK|D1|F|JPL&apos;,&apos;UK|D1|F|JSH&apos;,&apos;UK|D1|F|JUS&apos;,&apos;UK|D1|F|KDP&apos;,&apos;UK|D1|F|KDT&apos;,&apos;UK|D1|F|KES&apos;,&apos;UK|D1|F|KKK&apos;,&apos;UK|D1|F|KM1&apos;,&apos;UK|D1|F|KMC&apos;,&apos;UK|D1|F|KOL&apos;,&apos;UK|D1|F|LAW&apos;,&apos;UK|D1|F|LCG&apos;,&apos;UK|D1|F|LEV&apos;,&apos;UK|D1|F|LOC&apos;,&apos;UK|D1|F|LOP&apos;,&apos;UK|D1|F|LOT&apos;,&apos;UK|D1|F|LPM&apos;,&apos;UK|D1|F|LRL&apos;,&apos;UK|D1|F|LUC&apos;,&apos;UK|D1|F|LUF&apos;,&apos;UK|D1|F|MA1&apos;,&apos;UK|D1|F|MA3&apos;,&apos;UK|D1|F|MAF&apos;,&apos;UK|D1|F|MAI&apos;,&apos;UK|D1|F|MAT&apos;,&apos;UK|D1|F|MAV&apos;,&apos;UK|D1|F|MBR&apos;,&apos;UK|D1|F|MC3&apos;,&apos;UK|D1|F|MDO&apos;,&apos;UK|D1|F|ME1&apos;,&apos;UK|D1|F|MGA&apos;,&apos;UK|D1|F|MIS&apos;,&apos;UK|D1|F|MM1&apos;,&apos;UK|D1|F|MM3&apos;,&apos;UK|D1|F|MNX&apos;,&apos;UK|D1|F|MOA&apos;,&apos;UK|D1|F|MOG&apos;,&apos;UK|D1|F|MOM&apos;,&apos;UK|D1|F|MOR&apos;,&apos;UK|D1|F|MTC&apos;,&apos;UK|D1|F|N01&apos;,&apos;UK|D1|F|NAD&apos;,&apos;UK|D1|F|NET&apos;,&apos;UK|D1|F|NIA&apos;,&apos;UK|D1|F|NLM&apos;,&apos;UK|D1|F|NRA&apos;,&apos;UK|D1|F|NWL&apos;,&apos;UK|D1|F|ODC&apos;,&apos;UK|D1|F|OER&apos;,&apos;UK|D1|F|OGI&apos;,&apos;UK|D1|F|P10&apos;,&apos;UK|D1|F|P24&apos;,&apos;UK|D1|F|P25&apos;,&apos;UK|D1|F|P75&apos;,&apos;UK|D1|F|P7A&apos;,&apos;UK|D1|F|PAS&apos;,&apos;UK|D1|F|PCB&apos;,&apos;UK|D1|F|PET&apos;,&apos;UK|D1|F|PGN&apos;,&apos;UK|D1|F|PM1&apos;,&apos;UK|D1|F|PPA&apos;,&apos;UK|D1|F|PRA&apos;,&apos;UK|D1|F|PRB&apos;,&apos;UK|D1|F|PUB&apos;,&apos;UK|D1|F|Q01&apos;,&apos;UK|D1|F|QAZ&apos;,&apos;UK|D1|F|QBS&apos;,&apos;UK|D1|F|R12&apos;,&apos;UK|D1|F|RAI&apos;,&apos;UK|D1|F|RBE&apos;,&apos;UK|D1|F|RET&apos;,&apos;UK|D1|F|ROA&apos;)
+ORDER BY CREATED_DATE DESC
+
+
+</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">CLIENT_CODE, CLIENT_NAME, AGENCY_OWNER_ID, MEDIA_CODE,SYSTEM_CODE,CURRENCY_CODE,BILL_CURRENCY,MEDIAOCEAN_ID</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">10</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">10</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler for getClientsByBusinessKeysUsingPUT" enabled="true">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+
+String cc1 = vars.get(&quot;CLIENT_CODE_&quot;+ i);
+String CLIENT_CODE;
+vars.put(&quot;CLIENT_CODE&quot;,cc1);
+log.info(CLIENT_CODE);
+
+String cn1 = vars.get(&quot;CLIENT_NAME_&quot;+ i);
+String CLIENT_NAME;
+vars.put(&quot;CLIENT_NAME&quot;,cn1);
+log.info(CLIENT_NAME);
+
+
+String ag1 = vars.get(&quot;AGENCY_OWNER_ID_&quot;+ i);
+String AGENCY_OWNER_ID;
+vars.put(&quot;AGENCY_OWNER_ID&quot;,ag1);
+log.info(AGENCY_OWNER_ID);
+
+
+String mc1 = vars.get(&quot;MEDIA_CODE_&quot;+ i);
+String MEDIA_CODE;
+vars.put(&quot;MEDIA_CODE&quot;,mc1);
+log.info(MEDIA_CODE);
+
+String sc1 = vars.get(&quot;SYSTEM_CODE_&quot;+ i);
+String SYSTEM_CODE;
+vars.put(&quot;SYSTEM_CODE&quot;,sc1);
+
+
+String cc2 = vars.get(&quot;CURRENCY_CODE_&quot;+ i);
+String CURRENCY_CODE;
+vars.put(&quot;CURRENCY_CODE&quot;,cc2);
+
+String bc1 = vars.get(&quot;BILL_CURRENCY_&quot;+ i);
+String BILL_CURRENCY;
+vars.put(&quot;BILL_CURRENCY&quot;,bc1);
+
+String mo1 = vars.get(&quot;MEDIAOCEAN_ID_&quot;+ i);
+String MEDIAOCEAN_ID;
+vars.put(&quot;MEDIAOCEAN_ID&quot;,mo1);
+log.info(MEDIAOCEAN_ID);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getClientsByBusinessKeysUsingPUT-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&quot;${MEDIAOCEAN_ID}&quot;]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${PDTserver}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">prisma-masterdata-service/internal/xmedia/client/businesskeys?agencyMediaoceanId=35-1-FNG0-6</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-1016495905">&quot;clientCode&quot;:&quot;${CLIENT_CODE}&quot;</stringProp>
+                <stringProp name="550623984">&quot;name&quot;:&quot;${CLIENT_NAME}&quot;</stringProp>
+                <stringProp name="-1664707182">&quot;agencyOwnerId&quot;:${AGENCY_OWNER_ID}</stringProp>
+                <stringProp name="917651519">&quot;mediaCode&quot;:&quot;${MEDIA_CODE}&quot;</stringProp>
+                <stringProp name="123905375">&quot;systemCode&quot;:&quot;${SYSTEM_CODE}&quot;</stringProp>
+                <stringProp name="1068309855">&quot;currencyCode&quot;:&quot;${CURRENCY_CODE}&quot;</stringProp>
+                <stringProp name="1634515419">&quot;mediaoceanId&quot;:&quot;${MEDIAOCEAN_ID}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Client APIs Group - for MDM System" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1524490690000</longProp>
+        <longProp name="ThreadGroup.end_time">1524490690000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">MO-SERVICE-NAME</stringProp>
+              <stringProp name="Header.value">sample-service-name</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="PRSMQA2 Photon MDM Connection" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">SELECT 1 FROM DUAL</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@NY-RAC-NPRDEE01.NA.RTDOM.NET/prsmqa2_d</stringProp>
+          <stringProp name="driver">oracle.jdbc.driver.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">PHOTON_MDM_RO</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">PHOTON_MDM_RO</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="PRSMPDT Photon MDM Connection" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">SELECT 1 FROM DUAL</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnMDM1</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@ny-rac-nprd1/PRSMPDT_D</stringProp>
+          <stringProp name="driver">oracle.jdbc.driver.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">PHOTON_MDM_RO</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">PHOTON_MDM_RO</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </Arguments>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="PDTserver" elementType="Argument">
+              <stringProp name="Argument.name">PDTserver</stringProp>
+              <stringProp name="Argument.value">prv.aos.prsmpdt.dds.net/</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query for getClientsByBusinessKeysUsingPUT" enabled="true">
+          <stringProp name="dataSource">dbconnMDM1</stringProp>
+          <stringProp name="query">SELECT CLIENT_CODE, CLIENT_NAME, AGENCY_OWNER_ID, MEDIA_CODE,SYSTEM_CODE,CURRENCY_CODE,BILL_CURRENCY,MEDIAOCEAN_ID FROM XMEDIA_CLIENT WHERE 
+BUY_SYSTEM=&apos;MDM&apos; AND AGENCY_ALPHA=&apos;MBS&apos;
+ORDER BY CREATED_DATE DESC</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">CLIENT_CODE, CLIENT_NAME, AGENCY_OWNER_ID, MEDIA_CODE,SYSTEM_CODE,CURRENCY_CODE,BILL_CURRENCY,MEDIAOCEAN_ID</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">1000</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">1000</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler for getClientsByBusinessKeysUsingPUT" enabled="true">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+
+String cc1 = vars.get(&quot;CLIENT_CODE_&quot;+ i);
+String CLIENT_CODE;
+vars.put(&quot;CLIENT_CODE&quot;,cc1);
+log.info(CLIENT_CODE);
+
+String cn1 = vars.get(&quot;CLIENT_NAME_&quot;+ i);
+String CLIENT_NAME;
+vars.put(&quot;CLIENT_NAME&quot;,cn1);
+log.info(CLIENT_NAME);
+
+
+String ag1 = vars.get(&quot;AGENCY_OWNER_ID_&quot;+ i);
+String AGENCY_OWNER_ID;
+vars.put(&quot;AGENCY_OWNER_ID&quot;,ag1);
+log.info(AGENCY_OWNER_ID);
+
+
+String mc1 = vars.get(&quot;MEDIA_CODE_&quot;+ i);
+String MEDIA_CODE;
+vars.put(&quot;MEDIA_CODE&quot;,mc1);
+log.info(MEDIA_CODE);
+
+String sc1 = vars.get(&quot;SYSTEM_CODE_&quot;+ i);
+String SYSTEM_CODE;
+vars.put(&quot;SYSTEM_CODE&quot;,sc1);
+
+
+String cc2 = vars.get(&quot;CURRENCY_CODE_&quot;+ i);
+String CURRENCY_CODE;
+vars.put(&quot;CURRENCY_CODE&quot;,cc2);
+
+String bc1 = vars.get(&quot;BILL_CURRENCY_&quot;+ i);
+String BILL_CURRENCY;
+vars.put(&quot;BILL_CURRENCY&quot;,bc1);
+
+String mo1 = vars.get(&quot;MEDIAOCEAN_ID_&quot;+ i);
+String MEDIAOCEAN_ID;
+vars.put(&quot;MEDIAOCEAN_ID&quot;,mo1);
+log.info(MEDIAOCEAN_ID);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getClientsByBusinessKeysUsingPUT-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&quot;${MEDIAOCEAN_ID}&quot;]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${PDTserver}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">prisma-masterdata-service/internal/xmedia/client/businesskeys?agencyMediaoceanId=35-1-6MR30DJK-4</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-1016495905">&quot;clientCode&quot;:&quot;${CLIENT_CODE}&quot;</stringProp>
+                <stringProp name="550623984">&quot;name&quot;:&quot;${CLIENT_NAME}&quot;</stringProp>
+                <stringProp name="-1664707182">&quot;agencyOwnerId&quot;:${AGENCY_OWNER_ID}</stringProp>
+                <stringProp name="917651519">&quot;mediaCode&quot;:&quot;${MEDIA_CODE}&quot;</stringProp>
+                <stringProp name="123905375">&quot;systemCode&quot;:&quot;${SYSTEM_CODE}&quot;</stringProp>
+                <stringProp name="1634515419">&quot;mediaoceanId&quot;:&quot;${MEDIAOCEAN_ID}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Client APIs Group - for OX  System" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1524490690000</longProp>
+        <longProp name="ThreadGroup.end_time">1524490690000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">MO-SERVICE-NAME</stringProp>
+              <stringProp name="Header.value">sample-service-name</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="PRSMQA2 Photon MDM Connection" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">SELECT 1 FROM DUAL</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@NY-RAC-NPRDEE01.NA.RTDOM.NET/prsmqa2_d</stringProp>
+          <stringProp name="driver">oracle.jdbc.driver.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">PHOTON_MDM_RO</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">PHOTON_MDM_RO</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="PRSMPDT Photon MDM Connection" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">SELECT 1 FROM DUAL</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnMDM1</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@ny-rac-nprd1/PRSMPDT_D</stringProp>
+          <stringProp name="driver">oracle.jdbc.driver.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">PHOTON_MDM_RO</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">PHOTON_MDM_RO</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </Arguments>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="PDTserver" elementType="Argument">
+              <stringProp name="Argument.name">PDTserver</stringProp>
+              <stringProp name="Argument.value">prv.aos.prsmpdt.dds.net/</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query for getClientsByBusinessKeysUsingPUT" enabled="true">
+          <stringProp name="dataSource">dbconnMDM1</stringProp>
+          <stringProp name="query">SELECT XMC.CLIENT_CODE, XMC.CLIENT_NAME, XMC.AGENCY_OWNER_ID, XMCMM.MEDIA_CODE,XMCMM.SYSTEM_CODE,XMC.CURRENCY_CODE,XMC.BILL_CURRENCY,XMCMM.MEDIAOCEAN_ID FROM XMEDIA_CLIENT XMC
+, XMEDIA_CLIENT_MEDIA_MAPPING XMCMM
+ WHERE 
+ XMC.MEDIAOCEAN_ID=XMCMM.CLIENT_MEDIAOCEAN_ID AND 
+XMC.BUY_SYSTEM=&apos;OX&apos; AND XMC.AGENCY_ALPHA=&apos;IPG&apos;
+AND ROWNUM&lt;1000
+ORDER BY XMC.CREATED_DATE DESC</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">CLIENT_CODE, CLIENT_NAME, AGENCY_OWNER_ID, MEDIA_CODE,SYSTEM_CODE,CURRENCY_CODE,BILL_CURRENCY,MEDIAOCEAN_ID</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">1000</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">1000</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler for getClientsByBusinessKeysUsingPUT" enabled="true">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+
+String cc1 = vars.get(&quot;CLIENT_CODE_&quot;+ i);
+String CLIENT_CODE;
+vars.put(&quot;CLIENT_CODE&quot;,cc1);
+log.info(CLIENT_CODE);
+
+String cn1 = vars.get(&quot;CLIENT_NAME_&quot;+ i);
+String CLIENT_NAME;
+vars.put(&quot;CLIENT_NAME&quot;,cn1);
+log.info(CLIENT_NAME);
+
+
+String ag1 = vars.get(&quot;AGENCY_OWNER_ID_&quot;+ i);
+String AGENCY_OWNER_ID;
+vars.put(&quot;AGENCY_OWNER_ID&quot;,ag1);
+log.info(AGENCY_OWNER_ID);
+
+
+String mc1 = vars.get(&quot;MEDIA_CODE_&quot;+ i);
+String MEDIA_CODE;
+vars.put(&quot;MEDIA_CODE&quot;,mc1);
+log.info(MEDIA_CODE);
+
+String sc1 = vars.get(&quot;SYSTEM_CODE_&quot;+ i);
+String SYSTEM_CODE;
+vars.put(&quot;SYSTEM_CODE&quot;,sc1);
+
+
+String cc2 = vars.get(&quot;CURRENCY_CODE_&quot;+ i);
+String CURRENCY_CODE;
+vars.put(&quot;CURRENCY_CODE&quot;,cc2);
+
+String bc1 = vars.get(&quot;BILL_CURRENCY_&quot;+ i);
+String BILL_CURRENCY;
+vars.put(&quot;BILL_CURRENCY&quot;,bc1);
+
+String mo1 = vars.get(&quot;MEDIAOCEAN_ID_&quot;+ i);
+String MEDIAOCEAN_ID;
+vars.put(&quot;MEDIAOCEAN_ID&quot;,mo1);
+log.info(MEDIAOCEAN_ID);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="getClientsByBusinessKeysUsingPUT-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&quot;${MEDIAOCEAN_ID}&quot;]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${PDTserver}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">prisma-masterdata-service/internal/xmedia/client/businesskeys?agencyMediaoceanId=22-ZGL4O8Z-1</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-1016495905">&quot;clientCode&quot;:&quot;${CLIENT_CODE}&quot;</stringProp>
+                <stringProp name="550623984">&quot;name&quot;:&quot;${CLIENT_NAME}&quot;</stringProp>
+                <stringProp name="-1664707182">&quot;agencyOwnerId&quot;:${AGENCY_OWNER_ID}</stringProp>
+                <stringProp name="917651519">&quot;mediaCode&quot;:&quot;${MEDIA_CODE}&quot;</stringProp>
+                <stringProp name="123905375">&quot;systemCode&quot;:&quot;${SYSTEM_CODE}&quot;</stringProp>
+                <stringProp name="1634515419">&quot;mediaoceanId&quot;:&quot;${MEDIAOCEAN_ID}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
+  </hashTree>
+</jmeterTestPlan>

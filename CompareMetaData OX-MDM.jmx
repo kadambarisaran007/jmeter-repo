@@ -1,0 +1,1487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Compare CPE MDM-OX" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Compare Client details" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1518605921000</longProp>
+        <longProp name="ThreadGroup.end_time">1518605921000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">PREAUTH_USER_ID</stringProp>
+              <stringProp name="Header.value">9999993</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="PRSMQA2 Photon MDM Connection" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">Select 1</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@NY-RAC-NPRDEE01.NA.RTDOM.NET/prsmqa2_d</stringProp>
+          <stringProp name="driver">oracle.jdbc.driver.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">PHOTON_MDM_RO</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">PHOTON_MDM_RO</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="SPECTRA OX Connection" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">Select 1</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnOX</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@ny-ox-db01:1521:ipgstag</stringProp>
+          <stringProp name="driver">oracle.jdbc.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">readonly</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">readonly</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="InternalUrl" elementType="Argument">
+              <stringProp name="Argument.name">InternalUrl</stringProp>
+              <stringProp name="Argument.value">prv.aos.devciny.dds.net/prisma-masterdata-service/xmedia/client/legacySystem</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="protocol" elementType="Argument">
+              <stringProp name="Argument.name">protocol</stringProp>
+              <stringProp name="Argument.value">http</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="Threads" elementType="Argument">
+              <stringProp name="Argument.name">Threads</stringProp>
+              <stringProp name="Argument.value">1</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="code" elementType="Argument">
+              <stringProp name="Argument.name">code</stringProp>
+              <stringProp name="Argument.value">A</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="system" elementType="Argument">
+              <stringProp name="Argument.name">system</stringProp>
+              <stringProp name="Argument.value">OX</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="agency" elementType="Argument">
+              <stringProp name="Argument.name">agency</stringProp>
+              <stringProp name="Argument.value">IPG</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="media" elementType="Argument">
+              <stringProp name="Argument.name">media</stringProp>
+              <stringProp name="Argument.value">7</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MDM-Client-Validate-Count" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT Count(DISTINCT client_code) from xmedia_CLIENT where agency_alpha= &apos;${agency}&apos; and last_action &lt;&gt;&apos;D&apos;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">mdm_total_count</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-OX-Client-Validate-Count" enabled="true">
+          <stringProp name="dataSource">dbconnOX</stringProp>
+          <stringProp name="query">select count(*) from  ANALOG.jl_client </stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">ox_total_count</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="Assertion- Validate Count_MDM-OX_IPG" enabled="true">
+            <stringProp name="BeanShellAssertion.query">int oxcount = Integer.parseInt(vars.get(&quot;ox_total_count_&quot;+1));
+int mdmcount = Integer.parseInt(vars.get(&quot;mdm_total_count_&quot;+1));
+print(&quot;********************************Compare Client details*************************************&quot;);
+print(&quot;Count of records from OX is &quot;+oxcount);
+print(&quot;Count of records from MDM is &quot;+mdmcount);
+
+if(oxcount == 0 || mdmcount ==0)
+				{
+				Failure = true;			    
+				FailureMessage=&quot;Failure - One of the system returns 0 records, please check DB connections...&quot;;
+				print(FailureMessage);
+				
+				}
+	else 	if(oxcount != mdmcount){
+				Failure = true;			    
+				FailureMessage=&quot;Failure - Count of records returned from both the Databases i.e. MDM and OX is unequal&quot;;
+				print(FailureMessage);
+	      }
+		else{
+				print(&quot;Count of records returned from both the Databases i.e. MDM and OX is exact same&quot;);
+				
+		}
+		
+
+
+</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MDM-Client-Validate-Data" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT 
+COALESCE(CLIENT_CODE, &apos;0&apos;) as CLIENT_CODE,
+COALESCE(client_name, &apos;0&apos;) as client_name,
+COALESCE(client_short_name, &apos;0&apos;) as client_short_name,
+COALESCE(location_id, &apos;0&apos;) as location_id
+ fROM xmedia_CLIENT 
+ where  AGENCY_ALPHA=&apos;${agency}&apos;
+ and last_action &lt;&gt; &apos;D&apos;
+ order by Client_code,
+ client_name,
+ location_id</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">mdm_client_code,mdm_client_name,mdm_short_name,mdm_location</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-OX-Client-Validate-Data" enabled="true">
+          <stringProp name="dataSource">dbconnOX</stringProp>
+          <stringProp name="query">SELECT COALESCE(client_id, &apos;0&apos;) AS client_id,
+  COALESCE(SHORT_NAME, &apos;0&apos;)     AS short_name ,
+  COALESCE(NAME, &apos;0&apos;)           AS name ,
+  COALESCE(primary_loc_id, &apos;0&apos;) AS primary_loc_id
+FROM ANALOG.jl_client
+ORDER BY client_id,
+  name ,
+  primary_loc_id</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">ox_client_code,ox_short_name,ox_client_name,ox_location</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="Assertion- Compare Master data details across" enabled="true">
+            <stringProp name="BeanShellAssertion.query">if(${mdm_client_code_#} == 0 || ${ox_client_code_#} == 0){
+	
+		Failure=true;
+		FailureMessage = &quot;Values not returned by query in either of the System. Please check DB connection..&quot;;
+		print(FailureMessage);
+}
+		
+else if(${ox_client_code_#} &gt;0){
+
+for(int i=1;i&lt;= ${ox_client_code_#}; i++){
+	
+String code1= vars.get(&quot;mdm_client_code_&quot;+i);
+String code2= vars.get(&quot;ox_client_code_&quot;+i);
+String cname1=vars.get(&quot;mdm_client_name_&quot;+i);
+String cname2=vars.get(&quot;ox_client_name_&quot;+i);
+String location1=vars.get(&quot;mdm_location_&quot;+i);
+String location2=vars.get(&quot;ox_location_&quot;+i);
+String shortname1 = vars.get(&quot;mdm_short_name_&quot;+i);
+String shortname2 = vars.get(&quot;ox_short_name_&quot;+i);
+
+print(&quot;------------------------------------------------------------------------&quot;);
+print(&quot;Client_1:&quot;+code1);
+print(&quot;Product_Code_1: &quot;+location1);
+print(&quot;Product_name: &quot;+cname1);
+print(&quot;Shortname_1: &quot;+shortname1);
+print(&quot;Client_2:&quot;+code2);
+print(&quot;Product_Code_2:&quot;+location2);
+print(&quot;Product_Name_2:&quot;+ cname2);
+print(&quot;Shortname_2: &quot;+ shortname2);
+
+
+			if (code2 == &quot;0&quot; || code1 == &quot;0&quot; || cname1 == &quot;0&quot; || cname2 == &quot;0&quot; || location1 == &quot;0&quot; || location2 == &quot;0&quot; || shortname1.equals(&quot;0&quot;) || shortname2.equals(&quot;0&quot;)){
+	
+						print(&quot;----------------Warning ----------One of the value is null please check--------------------&quot;);
+	
+							}
+			
+
+				if( !code1.equals(code2))
+						{
+							Failure = true;
+							FailureMessage = &quot;Client codes don&apos;t match&quot;;
+							print(FailureMessage);
+						}
+
+						else{
+							print(&quot;Client codes  match&quot;);
+							}
+
+
+				if( !cname1.equals(cname2))
+						{
+							Failure = true;
+							FailureMessage = &quot;Client names don&apos;t match&quot;;
+							print(FailureMessage);
+						}
+
+						else{
+							print(&quot;Client names  match&quot;);
+							}
+		
+
+
+				if( !location1.equals(location2))
+						{
+							Failure = true;
+							FailureMessage = &quot;Locations don&apos;t match&quot;;
+							print(FailureMessage);
+						}
+
+						else{
+							print(&quot;Locations  match&quot;);
+							}
+
+
+				if( !shortname1.equals(shortname2))
+						{
+							Failure = true;
+							FailureMessage = &quot;Shortnames don&apos;t match&quot;;
+							print(FailureMessage);
+						}
+
+						else{
+							print(&quot;Shortnames names match&quot;);
+							}
+					
+			
+			}
+		}</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="API - MDM- XMEDIA client Request" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${InternalUrl}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/${system}/tenant/${agency}/media/${media}/clientId/${ox_client_code_1}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="1872065286">&quot;id&quot;:&quot;${ox_client_code_1}&quot;</stringProp>
+              <stringProp name="786245044">&quot;name&quot;:&quot;${ox_client_name_1}&quot;</stringProp>
+              <stringProp name="-741237933">&quot;locationId&quot;:&quot;${ox_location_1}&quot;</stringProp>
+            </collectionProp>
+            <stringProp name="TestPlan.comments">Matches the values returned in MDM API to the ones returned from OX DB</stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-Internal-count-null-values" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query"> SELECT COUNT(*) FROM (SELECT BUY_SYSTEM ,
+  AGENCY_ALPHA     ,
+  CLIENT_CODE      ,
+  client_name      ,
+  agency_owner_id  ,
+  media_code       ,
+  LOCATION_ID      ,
+  mediaocean_id    ,
+  system_code
+   FROM xmedia_CLIENT
+  WHERE agency_alpha  =&apos;${agency}&apos;
+  AND LAST_ACTION &lt;&gt; &apos;D&apos;
+AND ( BUY_SYSTEM     IS NULL
+OR agency_alpha      IS NULL
+OR agency_owner_id   IS NULL
+OR media_code        IS NULL
+OR LOCATION_ID       IS NULL
+OR mediaocean_id     IS NULL
+OR system_code       IS NULL
+)
+ORDER BY Client_code ,
+  client_name        ,
+  LOCATION_ID )</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">mdm_null_count</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-Internal-MDM-Client-Validate-Data" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query"> SELECT BUY_SYSTEM ,
+  AGENCY_ALPHA     ,
+  CLIENT_CODE      ,
+  client_name      ,  
+  agency_owner_id  ,
+  media_code       ,
+  LOCATION_ID      ,
+  mediaocean_id    ,
+  system_code
+   FROM xmedia_CLIENT
+  WHERE agency_alpha  =&apos;${agency}&apos;
+  and last_action &lt;&gt; &apos;D&apos;
+AND ( BUY_SYSTEM     IS NULL
+OR agency_alpha      IS NULL
+OR agency_owner_id   IS NULL
+OR media_code        IS NULL
+OR LOCATION_ID       IS NULL
+OR mediaocean_id     IS NULL
+OR system_code       IS NULL
+)
+ORDER BY Client_code ,
+  client_name        ,
+  LOCATION_ID </stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">mdm_buy_system,mdm_agency,mdm_client_code,mdm_client_name,mdm_ag_own_id,mdm_med_code,mdm_location, mdm_mo_id,mdm_system_code</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="Assertion - MDM Data validation INTERNAL" enabled="true">
+            <stringProp name="BeanShellAssertion.query">if(${mdm_null_count_1} == 0) 
+							{
+		
+		print(&quot;------------Values not returned by query in either of the System. Please check DB connection or query returns null records..-----------&quot;);
+		log.info(&quot;------------Values not returned by query in either of the System. Please check DB connection or query returns null records..-----------&quot;);
+							}
+							
+else if(${mdm_null_count_1} &gt; 0){
+
+print(&quot; ----------------------There are below records with one of the null columns..&quot;);
+
+for(int i =1; i&lt;= ${mdm_null_count_1}; i++){
+	
+		String mdm_code= vars.get(&quot;mdm_client_code_&quot;+i);
+		String mdm_name = vars.get(&quot;mdm_client_name_&quot;+i);
+		String mdm_location = vars.get(&quot;mdm_location_&quot;+i);		
+		String mdm_buy_system = vars.get(&quot;mdm_buy_system_&quot;+i);		
+		String mdm_agency = vars.get(&quot;mdm_agency_&quot;+i);
+		String mdm_ag_own_id = vars.get(&quot;mdm_ag_own_id_&quot;+i);
+		String mdm_mo_id = vars.get(&quot;mdm_mo_id_&quot;+i);		
+		
+		
+		
+		print(&quot;Code: &quot;+mdm_code);
+		print(&quot;Client_name: &quot;+mdm_name);
+		print(&quot;Location: &quot;+mdm_location);
+		print(&quot;Buy_System: &quot;+mdm_buy_system);
+		print(&quot;Agency_alpha: &quot;+mdm_agency);
+		print(&quot;Agency_Owener_Id: &quot;+mdm_ag_own_id);
+		print(&quot;MO_Id: &quot;+mdm_mo_id);
+		
+		
+		
+		
+				if(mdm_code == null)
+						{
+								Failure=true;
+								FailureMessage=&quot;Client code is null&quot;;
+								print(FailureMessage);
+							
+							}
+
+
+
+				if(mdm_name == null)
+						{
+								Failure=true;
+								FailureMessage=&quot;Client name is null&quot;;
+								print(FailureMessage);
+							
+							}
+
+
+				if(mdm_buy_system == null)
+						{
+								Failure=true;
+								FailureMessage=&quot;Buy system is null&quot;;
+								print(FailureMessage);
+							
+							}
+
+
+				if(mdm_agency== null)
+						{
+								Failure=true;
+								FailureMessage=&quot;Agency alpha is null&quot;;
+								print(FailureMessage);
+							
+							}
+
+				if(mdm_ag_own_id== null)
+						{
+								Failure=true;
+								FailureMessage=&quot;Agency owner Id is null&quot;;
+								print(FailureMessage);
+							
+							}		
+
+
+				if(mdm_mo_id== null)
+						{
+								Failure=true;
+								FailureMessage=&quot;MO Id is null&quot;;
+								print(FailureMessage);
+							
+							}	
+							
+				
+
+
+
+								
+									}
+						}
+</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Compare Estimate details" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1518605921000</longProp>
+        <longProp name="ThreadGroup.end_time">1518605921000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">PREAUTH_USER_ID</stringProp>
+              <stringProp name="Header.value">9999993</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="PRSMQA2 Photon MDM Connection" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">Select 1</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:PHOTON_MDM_DATA/PASS_VALUE@NY-RAC-NPRDEE01.NA.RTDOM.NET/DEVCINY_D  </stringProp>
+          <stringProp name="driver">oracle.jdbc.driver.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">PHOTON_MDM_RO</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">PHOTON_MDM_RO</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="SPECTRA OX Connection" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">Select 1</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnOX</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@ny-ox-db01:1521:ipgstag</stringProp>
+          <stringProp name="driver">oracle.jdbc.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">readonly</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">readonly</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="InternalUrl" elementType="Argument">
+              <stringProp name="Argument.name">InternalUrl</stringProp>
+              <stringProp name="Argument.value">prv.aos.devciny.dds.net/prisma-masterdata-service/xmedia/client/legacySystem</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="protocol" elementType="Argument">
+              <stringProp name="Argument.name">protocol</stringProp>
+              <stringProp name="Argument.value">http</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="Threads" elementType="Argument">
+              <stringProp name="Argument.name">Threads</stringProp>
+              <stringProp name="Argument.value">1</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="code" elementType="Argument">
+              <stringProp name="Argument.name">code</stringProp>
+              <stringProp name="Argument.value">3G</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="system" elementType="Argument">
+              <stringProp name="Argument.name">system</stringProp>
+              <stringProp name="Argument.value">OX</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="agency" elementType="Argument">
+              <stringProp name="Argument.name">agency</stringProp>
+              <stringProp name="Argument.value">IPG</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="media" elementType="Argument">
+              <stringProp name="Argument.name">media</stringProp>
+              <stringProp name="Argument.value">7</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MDM-Client-Validate-Count" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">select count(estimate_code) from xmedia_estimate  where agency_alpha=&apos;${agency}&apos;  AND client_code  LIKE &apos;${code}%&apos;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">mdm_total_count</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-OX-Client-Validate-Count" enabled="true">
+          <stringProp name="dataSource">dbconnOX</stringProp>
+          <stringProp name="query">select count(est_code) from ANALOG.ne_estimate WHERE CLIENT_ID LIKE &apos;${code}%&apos; 
+UNION 
+select count(est_num) from ANALOG.pm_pmest WHERE CLIENT_ID LIKE &apos;${code}%&apos;
+UNION 
+select COUNT(est_num) from analog.sp_superest WHERE client_ID  LIKE &apos;${code}%&apos;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">ox_total_count</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="Assertion- Validate Count_MDM-OX_IPG" enabled="true">
+            <stringProp name="BeanShellAssertion.query">int oxcount = Integer.parseInt(vars.get(&quot;ox_total_count_&quot;+1));
+int mdmcount = Integer.parseInt(vars.get(&quot;mdm_total_count_&quot;+1));
+print(&quot;********************************Compare Product details*************************************&quot;);
+print(&quot;Count of records from OX is &quot;+oxcount);
+print(&quot;Count of records from MDM is &quot;+mdmcount);
+
+if(oxcount == 0 || mdmcount ==0){
+	Failure = true;			    
+				FailureMessage=&quot;Failure - One of the system returns 0 records, please check DB connections...&quot;;
+				print(FailureMessage);}
+	else 	if(oxcount != mdmcount){
+				Failure = true;			    
+				FailureMessage=&quot;Failure - Count of records returned from both the Databases i.e. MDM and OX is unequal&quot;;
+				print(FailureMessage);
+	      }
+		else{
+				print(&quot;Count of records returned from both the Databases i.e. MDM and OX is exact same&quot;);
+				
+		}
+		
+
+
+</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MDM-Client-Validate-Data" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT DISTINCT CLIENT_CODE, client_name, client_short_name fROM xmedia_CLIENT where  AGENCY_ALPHA=&apos;${agency}&apos; and client_code like &apos;${code%}&apos; order by Client_code,client_name</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">mdm_client_code,mdm_client_name,mdm_short_name</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-OX-Client-Validate-Data" enabled="true">
+          <stringProp name="dataSource">dbconnOX</stringProp>
+          <stringProp name="query">SELECT  client_id,SORT_NAME,NAME, primary_loc_id FROM ANALOG.jl_client order by client_id,name,primary_loc_id</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">ox_client_code,ox_short_name,ox_client_name,ox_location</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="Assertion- Compare Master data details across" enabled="true">
+            <stringProp name="BeanShellAssertion.query">if(${mdm_client_code_#} == 0 || ${ox_client_code_#} == 0){
+	print(&quot;into first if&quot;);
+		Failure=true;
+		FailureMessage = &quot;Values not returned by query in either of the System. Please check DB connection..&quot;;
+		print(FailureMessage);
+		}
+else if(${ox_client_code_#} &gt; 0){
+	print(&quot;into second if&quot;);
+for(int i=1;i&lt;= ${mdm_total_count_1}; i++){
+	print(&quot;into third if&quot;);
+String code1= vars.get(&quot;mdm_client_code_&quot;+i);
+String code2= vars.get(&quot;ox_client_code_&quot;+i);
+String name1=vars.get(&quot;mdm_client_name_&quot;+i);
+String name2=vars.get(&quot;ox_client_name_&quot;+i);
+String location1=vars.get(&quot;mdm_location_&quot;+i);
+String location2=vars.get(&quot;ox_location_&quot;+i);
+String shortname1 = vars.get(&quot;mdm_short_name_&quot;+i);
+String shortname2 = vars.get(&quot;ox_short_name_&quot;+i);
+
+print(&quot;Client_1:&quot;+code1);
+print(&quot;Client_Name_1: &quot;+name1);
+print(&quot;Location_1: &quot;+location1);
+print(&quot;Shortname_1: &quot;+shortname1);
+print(&quot;Client_2: &quot;+code2);
+print(&quot;Client_Name_2: &quot;+name2);
+print(&quot;Location_2: &quot;+ location2);
+print(&quot;Shortname_2: &quot;+ shortname2);
+print(&quot;------------------------------------------------------------------------&quot;);
+
+if (code2 == null || code1 == null || name1 == null || name2 == null || location1 == null || location2 == null || shortname1 == null || shortname2 == null){
+	Failure= true;
+	FailureMessage = &quot;Either value is null&quot;;
+	print(FailureMessage);
+							}
+
+	if( !code1.equals(code2))
+						{
+			Failure= true;
+			FailureMessage = &quot;Codes are unequal&quot;;
+			print(FailureMessage);
+						}
+
+	if( !name1.equals(name2)){
+				Failure = true;
+				FailureMessage = &quot;Client names don&apos;t match&quot;;
+				print(FailureMessage);
+						}
+
+	if(!location1.equals(location2)){
+			Failure = true;
+			FailureMessage = &quot;Locations don&apos;t match&quot;;
+			print(FailureMessage);
+						}
+						
+	if(!shortname1.equals(shortname2)){
+			Failure = true;
+			FailureMessage = &quot;Shortnames don&apos;t match&quot;;
+			print(FailureMessage);
+						}
+		
+								}
+
+						}
+
+		
+</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="API - MDM- XMEDIA client Request" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${InternalUrl}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/${system}/tenant/${agency}/media/${media}/clientId/${ox_client_code_1}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="1872065286">&quot;id&quot;:&quot;${ox_client_code_1}&quot;</stringProp>
+              <stringProp name="786245044">&quot;name&quot;:&quot;${ox_client_name_1}&quot;</stringProp>
+              <stringProp name="-741237933">&quot;locationId&quot;:&quot;${ox_location_1}&quot;</stringProp>
+            </collectionProp>
+            <stringProp name="TestPlan.comments">Matches the values returned in MDM API to the ones returned from OX DB</stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-Internal-MDM-Client-Validate-Data" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query"> SELECT BUY_SYSTEM ,
+  AGENCY_ALPHA     ,
+  CLIENT_CODE      ,
+  client_name      ,
+  client_short_name,
+  agency_owner_id  ,
+  media_code       ,
+  LOCATION_ID      ,
+  mediaocean_id    ,
+  system_code
+   FROM xmedia_CLIENT
+  WHERE agency_alpha=&apos;${agency}&apos; AND 
+( BUY_SYSTEM
+  || agency_alpha
+  || agency_owner_id
+  || media_code
+  ||LOCATION_ID
+  || mediaocean_id
+  || system_code ) IS  NULL
+ORDER BY Client_code ,
+  client_name        ,
+  LOCATION_ID </stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">mdm_buy_system,mdm_agency,mdm_client_code,mdm_client_name,mdm_short_name,mdm_ag_own_id,mdm_med_code,mdm_location, mdm_mo_id,mdm_system_code</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="Assertion - MDM Data validation INTERNAL" enabled="true">
+            <stringProp name="BeanShellAssertion.query">if(${mdm_ag_own_id_#} == 0){
+		Failure=true;
+		FailureMessage = &quot;-------------------Values not returned by query in either of the System. Please check DB connection or query returns null records..-----------&quot;;
+		print(FailureMessage);
+		}
+else if(${mdm_ag_own_id_#} &gt; 0){
+
+print(&quot; ----------------------There are below records with one of the null columns..&quot;);
+
+for(int i =1; i&lt;= ${mdm_ag_own_id_#}; i++){
+	
+		String mdm_code= vars.get(&quot;mdm_client_code_&quot;+i);
+		String mdm_name = vars.get(&quot;mdm_client_name_&quot;+i);
+		String mdm_location = vars.get(&quot;mdm_location_&quot;+i);		
+		String mdm_buy_system = vars.get(&quot;mdm_buy_system_&quot;+i);		
+		String mdm_agency = vars.get(&quot;mdm_agency_&quot;+i);
+		String mdm_ag_own_id = vars.get(&quot;mdm_ag_own_id_&quot;+i);
+		String mdm_mo_id = vars.get(&quot;mdm_mo_id_&quot;+i);		
+		String mdm_system_code = vars.get(&quot;mdm_system_code_&quot;+i);
+		
+		print(&quot;Code: &quot;+mdm_code);
+		print(&quot;Client_name: &quot;+mdm_name);
+		print(&quot;Location: &quot;+mdm_location);
+		print(&quot;Buy_System: &quot;+mdm_buy_system);
+		print(&quot;Agency_alpha: &quot;+mdm_agency);
+		print(&quot;Agency_Owener_Id: &quot;+mdm_ag_own_id);
+		print(&quot;MO_Id: &quot;+mdm_mo_id);
+		print(&quot;System_code: &quot;+mdm_system_code);
+		
+		
+			if(mdm_code == null)
+			{				
+				Failure = true;	
+				FailureMessage(&quot;Client code is null&quot;);
+				print(FailureMessage);
+				}
+	
+		
+		
+			else if(mdm_name == null){
+				Failure = true;
+				FailureMessage(&quot;Client name is null&quot;);
+				print(FailureMessage);
+							}
+	
+		
+	
+			else if(mdm_location == null)
+			     {
+				Failure = true;
+				FailureMessage(&quot;Client location is null&quot;);
+				print(FailureMessage);
+				}
+
+
+		
+			else if(mdm_buy_system  == null)
+				{
+					Failure = true;
+					FailureMessage(&quot;Client buy system is null&quot;);
+					print(FailureMessage);
+					
+				}
+
+
+	
+			else	if(mdm_agency == null)
+				{
+					Failure = true;
+					FailureMessage(&quot;Client buy system is null&quot;);
+					print(FailureMessage);
+				}
+
+
+		
+		
+			else	if(mdm_ag_own_id   == null)
+				{
+				Failure = true;
+				FailureMessage(&quot;Client buy system is null&quot;);
+				print(FailureMessage);
+				}
+
+		
+		
+			else	if(mdm_mo_id  == null)
+				{
+				Failure = true;
+				FailureMessage(&quot;Client media ocean Id is null&quot;);
+				print(FailureMessage);
+				}
+
+
+		
+			else	if(mdm_system_code  == null)
+				{
+					Failure = true;
+					FailureMessage(&quot;System code is null&quot;);
+					print(FailureMessage);
+				}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	}
+}
+
+	</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Compare Product details" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1518605921000</longProp>
+        <longProp name="ThreadGroup.end_time">1518605921000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">PREAUTH_USER_ID</stringProp>
+              <stringProp name="Header.value">9999993</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="PRSMQA2 Photon MDM Connection" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">Select 1</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@NY-RAC-NPRDEE01.NA.RTDOM.NET/prsmqa2_d</stringProp>
+          <stringProp name="driver">oracle.jdbc.driver.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">PHOTON_MDM_RO</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">PHOTON_MDM_RO</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="SPECTRA OX Connection" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">Select 1</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnOX</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@ny-ox-db01:1521:ipgstag</stringProp>
+          <stringProp name="driver">oracle.jdbc.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">readonly</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">readonly</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="InternalUrl" elementType="Argument">
+              <stringProp name="Argument.name">InternalUrl</stringProp>
+              <stringProp name="Argument.value">prv.aos.devciny.dds.net/prisma-masterdata-service/xmedia/client/legacySystem</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="protocol" elementType="Argument">
+              <stringProp name="Argument.name">protocol</stringProp>
+              <stringProp name="Argument.value">http</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="Threads" elementType="Argument">
+              <stringProp name="Argument.name">Threads</stringProp>
+              <stringProp name="Argument.value">1</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="code" elementType="Argument">
+              <stringProp name="Argument.name">code</stringProp>
+              <stringProp name="Argument.value">A</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="system" elementType="Argument">
+              <stringProp name="Argument.name">system</stringProp>
+              <stringProp name="Argument.value">OX</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="agency" elementType="Argument">
+              <stringProp name="Argument.name">agency</stringProp>
+              <stringProp name="Argument.value">IPG</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="media" elementType="Argument">
+              <stringProp name="Argument.name">media</stringProp>
+              <stringProp name="Argument.value">7</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="records" elementType="Argument">
+              <stringProp name="Argument.name">records</stringProp>
+              <stringProp name="Argument.value">2000</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MDM-Client-Validate-Count" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT SUM(counter)
+FROM
+  (SELECT COUNT(1) AS counter ,
+    client_code,
+    product_code
+  FROM xmedia_product
+  WHERE agency_alpha=&apos;${agency}&apos;
+  AND LAST_ACTION &lt;&gt; &apos;D&apos;
+  GROUP BY client_code,
+    product_code
+  )tmp </stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">mdm_total_count</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-OX-Client-Validate-Count" enabled="true">
+          <stringProp name="dataSource">dbconnOX</stringProp>
+          <stringProp name="query">SELECT SUM(counter)
+FROM
+  (SELECT COUNT(1) AS counter,
+    DIVIS_ID,
+    client_id
+  FROM analog.jl_divis
+  GROUP BY DIVIS_ID,
+    client_id
+  ) tmp</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">ox_total_count</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="Assertion- Validate Count_MDM-OX_IPG" enabled="true">
+            <stringProp name="BeanShellAssertion.query">int oxcount = Integer.parseInt(vars.get(&quot;ox_total_count_&quot;+1));
+int mdmcount = Integer.parseInt(vars.get(&quot;mdm_total_count_&quot;+1));
+print(&quot;*********************************Compare Product details**************************************&quot;);
+print(&quot;Count of records from OX is &quot;+oxcount);
+print(&quot;Count of records from MDM is &quot;+mdmcount);
+
+if(oxcount == 0 || mdmcount ==0){
+	Failure = true;			    
+				FailureMessage=&quot;Failure -One of the system returns 0 records, please check DB connections...&quot;;
+				print(FailureMessage);}
+	else 	if(oxcount != mdmcount){
+				Failure = true;			    
+				FailureMessage=&quot;Failure -Count of records returned from both the Databases i.e. MDM and OX is unequal&quot;;
+				print(FailureMessage);
+	      }
+		else{
+				print(&quot;Success - Count of records returned from both the Databases i.e. MDM and OX is exact same&quot;);
+				
+		}
+		
+
+
+</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MDM-Client-Validate-Data" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query"> SELECT *
+   FROM
+  (SELECT COALESCE(CLIENT_CODE, &apos;0&apos;) AS client_code  ,
+    COALESCE(product_code , &apos;0&apos;)     AS product_code ,
+    COALESCE(product_name , &apos;0&apos;)     AS product_name ,
+    COALESCE(short_name , &apos;0&apos;)       AS short_name
+     FROM xmedia_product
+    WHERE agency_alpha=&apos;${agency}&apos;
+ GROUP BY client_code,
+    product_code     ,
+    product_name     ,
+    short_name
+ ORDER BY client_code,
+    product_code
+  )
+  WHERE rownum &lt;=${records}</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">mdm_client_code,mdm_product_code,mdm_product_name,mdm_short_name</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-OX-Client-Validate-Data" enabled="true">
+          <stringProp name="dataSource">dbconnOX</stringProp>
+          <stringProp name="query"> SELECT *
+   FROM
+  (SELECT COALESCE(client_id, &apos;0&apos;) as client_id,
+   COALESCE(divis_id, &apos;0&apos;) as  divis_id       ,
+   COALESCE(short_name, &apos;0&apos;) as  short_name     ,
+   COALESCE(name, &apos;0&apos;) as  name
+     FROM analog.jl_divis
+ ORDER BY client_id,
+    divis_id
+  )
+  WHERE rownum&lt;=${records}</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">ox_client_code,ox_product_code,ox_short_name,ox_product_name</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="Assertion- Compare Master data details across" enabled="true">
+            <stringProp name="BeanShellAssertion.query">if(${mdm_client_code_#} == 0 || ${ox_client_code_#} == 0){
+	
+		Failure=true;
+		FailureMessage = &quot;Values not returned by query in either of the System. Please check DB connection..&quot;;
+		print(FailureMessage);
+		}
+else if(${ox_client_code_#} &gt; 0){
+	
+for(int i=1;i&lt;= ${ox_client_code_#}; i++){
+	
+String code1= vars.get(&quot;mdm_client_code_&quot;+i);
+String code2= vars.get(&quot;ox_client_code_&quot;+i);
+String pname1=vars.get(&quot;mdm_product_name_&quot;+i);
+String pname2=vars.get(&quot;ox_product_name_&quot;+i);
+String pcode1=vars.get(&quot;mdm_product_code_&quot;+i);
+String pcode2=vars.get(&quot;ox_product_code_&quot;+i);
+String shortname1 = vars.get(&quot;mdm_short_name_&quot;+i);
+String shortname2 = vars.get(&quot;ox_short_name_&quot;+i);
+
+print(&quot;------------------------------------------------------------------------&quot;);
+print(&quot;Client_1:&quot;+code1);
+print(&quot;Product_Code_1: &quot;+pcode1);
+print(&quot;Product_name: &quot;+pname1);
+print(&quot;Shortname_1: &quot;+shortname1);
+print(&quot;Client_2:&quot;+code2);
+print(&quot;Product_Code_2:&quot;+pcode2);
+print(&quot;Product_Name_2:&quot;+ pname2);
+print(&quot;Shortname_2: &quot;+ shortname2);
+
+
+if (code2 == null || code1 == null || pname1 == null || pname2 == null || pcode1 == null || pcode2 == null || shortname1.equals(&apos;0&apos;) || shortname2.equals(&apos;0&apos;)){
+	Failure= true;
+	FailureMessage = &quot;One of the value is null please check&quot;;
+	print(FailureMessage);
+							}
+
+	if( !code1.equals(code2))
+						{
+			Failure= true;
+			FailureMessage = &quot;Codes are unequal&quot;;
+			print(FailureMessage);
+						}
+
+						else{print(&quot;Client codes match&quot;);
+						}
+
+	if( !pname1.equals(pname2)){
+				Failure = true;
+				FailureMessage = &quot;Product names don&apos;t match&quot;;
+				print(FailureMessage);
+						}
+
+						else{print(&quot;Product names match&quot;);
+							
+							}
+
+	if(!pcode1.equals(pcode2)){
+			Failure = true;
+			FailureMessage = &quot;Product codes don&apos;t match&quot;;
+			print(FailureMessage);
+						}
+
+						else{
+							print(&quot;Product codes match&quot;);
+							
+							}
+						
+	if(!shortname1.equals(shortname2)){
+			Failure = true;
+			FailureMessage = &quot;Shortnames don&apos;t match&quot;;
+			print(FailureMessage);
+						}
+		
+							else{
+								print(&quot;Shortnames match&quot;);
+								}	
+								
+								}
+
+						}
+
+		
+</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-Internal-MDM-Client-Validate-Data" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query"> SELECT BUY_SYSTEM ,
+  AGENCY_ALPHA     ,
+  CLIENT_CODE      ,
+  client_name      ,
+  client_short_name,
+  agency_owner_id  ,
+  media_code       ,
+  LOCATION_ID      ,
+  mediaocean_id    ,
+  system_code
+   FROM xmedia_CLIENT
+  WHERE agency_alpha=&apos;${agency}&apos; AND 
+( BUY_SYSTEM
+  || agency_alpha
+  || agency_owner_id
+  || media_code
+  ||LOCATION_ID
+  || mediaocean_id
+  || system_code ) IS  NULL
+ORDER BY Client_code ,
+  client_name        ,
+  LOCATION_ID </stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">mdm_buy_system,mdm_agency,mdm_client_code,mdm_client_name,mdm_short_name,mdm_ag_own_id,mdm_med_code,mdm_location, mdm_mo_id,mdm_system_code</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="Assertion - MDM Data validation INTERNAL" enabled="true">
+            <stringProp name="BeanShellAssertion.query">if(${mdm_ag_own_id_#} == 0){
+		
+		print(&quot;-------------------Values not returned by query in either of the System. Please check DB connection or query returns null records..-----------&quot;);
+		
+		}
+else if(${mdm_ag_own_id_#} &gt; 0){
+
+print(&quot; ----------------------There are below records with one of the null columns..&quot;);
+
+for(int i =1; i&lt;= ${mdm_ag_own_id_#}; i++){
+	
+		String mdm_code= vars.get(&quot;mdm_client_code_&quot;+i);
+		String mdm_name = vars.get(&quot;mdm_client_name_&quot;+i);
+		String mdm_location = vars.get(&quot;mdm_location_&quot;+i);		
+		String mdm_buy_system = vars.get(&quot;mdm_buy_system_&quot;+i);		
+		String mdm_agency = vars.get(&quot;mdm_agency_&quot;+i);
+		String mdm_ag_own_id = vars.get(&quot;mdm_ag_own_id_&quot;+i);
+		String mdm_mo_id = vars.get(&quot;mdm_mo_id_&quot;+i);		
+		
+		
+		print(&quot;Code: &quot;+mdm_code);
+		print(&quot;Client_name: &quot;+mdm_name);
+		print(&quot;Location: &quot;+mdm_location);
+		print(&quot;Buy_System: &quot;+mdm_buy_system);
+		print(&quot;Agency_alpha: &quot;+mdm_agency);
+		print(&quot;Agency_Owener_Id: &quot;+mdm_ag_own_id);
+		print(&quot;MO_Id: &quot;+mdm_mo_id);
+		
+		
+		
+			if(mdm_code == null)
+			{				
+				Failure = true;	
+				FailureMessage(&quot;Client code is null&quot;);
+				print(FailureMessage);
+				}
+	
+		
+		
+			else if(mdm_name == null){
+				Failure = true;
+				FailureMessage(&quot;Client name is null&quot;);
+				print(FailureMessage);
+							}
+	
+		
+	
+			else if(mdm_location == null)
+			     {
+				Failure = true;
+				FailureMessage(&quot;Client location is null&quot;);
+				print(FailureMessage);
+				}
+
+
+		
+			else if(mdm_buy_system  == null)
+				{
+					Failure = true;
+					FailureMessage(&quot;Client buy system is null&quot;);
+					print(FailureMessage);
+					
+				}
+
+
+	
+			else	if(mdm_agency == null)
+				{
+					Failure = true;
+					FailureMessage(&quot;Client buy system is null&quot;);
+					print(FailureMessage);
+				}
+
+
+		
+		
+			else	if(mdm_ag_own_id   == null)
+				{
+				Failure = true;
+				FailureMessage(&quot;Agency owner Id is null&quot;);
+				print(FailureMessage);
+				}
+
+		
+		
+			else	if(mdm_mo_id  == null)
+				{
+				Failure = true;
+				FailureMessage(&quot;Client media ocean Id is null&quot;);
+				print(FailureMessage);
+				}
+
+
+	
+	
+	}
+}
+
+	</stringProp>
+            <stringProp name="BeanShellAssertion.filename"></stringProp>
+            <stringProp name="BeanShellAssertion.parameters"></stringProp>
+            <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+          </BeanShellAssertion>
+          <hashTree/>
+        </hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

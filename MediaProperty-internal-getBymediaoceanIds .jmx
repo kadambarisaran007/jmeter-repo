@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="MediaProperty-internal-getBymediaoceanIds " enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1524490690000</longProp>
+        <longProp name="ThreadGroup.end_time">1524490690000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">PREAUTH_USER_ID</stringProp>
+              <stringProp name="Header.value">9999993</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="PRSMQA2 Photon MDM Connection" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">Select 1</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="dbUrl">jdbc:oracle:thin:@NY-RAC-NPRDEE01.NA.RTDOM.NET/prsmqa2_d</stringProp>
+          <stringProp name="driver">oracle.jdbc.driver.OracleDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">PHOTON_MDM_RO</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">PHOTON_MDM_RO</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="env" elementType="Argument">
+              <stringProp name="Argument.name">env</stringProp>
+              <stringProp name="Argument.value">prsmqa2</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="protocol" elementType="Argument">
+              <stringProp name="Argument.name">protocol</stringProp>
+              <stringProp name="Argument.value">http</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="mediaPropertyByMoId" elementType="Argument">
+              <stringProp name="Argument.name">mediaPropertyByMoId</stringProp>
+              <stringProp name="Argument.value">prv.aos.${env}.dds.net/prisma-masterdata-service/internal/mediaProperties</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="Threads" elementType="Argument">
+              <stringProp name="Argument.name">Threads</stringProp>
+              <stringProp name="Argument.value">1</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="mediaPropertyBySellerMoId" elementType="Argument">
+              <stringProp name="Argument.name">mediaPropertyBySellerMoId</stringProp>
+              <stringProp name="Argument.value">prv.aos.${env}.dds.net/prisma-masterdata-service/internal/sellerOrganisations/mediaoceanIds</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MediaProperty-BuyType" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT o.mediaocean_id,
+  mp.mediaocean_id AS plan_system,
+  mpl.name,
+  mp.MEDIA_PROPERTY_STATUS as status,
+  mp.MEDIA_PROPERTY_TYPE as type,
+  mp.ACTIVE_STATUS,  
+  mp.THIRD_PARTY_ID,
+  bt.NAME as buyTypes,
+  mpl.mediaocean_id as parentMediaProperty
+FROM media_property mp
+JOIN organisation o
+ON o.id= mp.MEDIA_OWNER_ID
+join MEDIA_PROP_BUY_TYPE_LINK mpbt
+on mpbt.MEDIA_PROPERTY_ID = mp.id
+join buy_type bt on 
+bt.id= mpbt.BUY_TYPE_ID 
+join   PC_MEDIA_PROP_LINK  pcmp
+on pcmp.CHILD_ID = mp.id
+join media_property mpl
+on pcmp.PARENT_ID = mpl.id
+where  mp.active_status is not null
+and
+mp.third_party_id  is not null 
+and rownum&lt;=10</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">mediaOwnerId,planSystem,propertyName,propertyStatus,propertyType,propertyActiveStatus,propertyThirdPartyId,buyType,parentMediaProperty</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${mediaOwnerId_#}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">${mediaOwnerId_#}</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+String aa1 = vars.get(&quot;mediaOwnerId_&quot;+ i);
+String mediaOwnerId;
+vars.put(&quot;mediaOwnerId&quot;,aa1);
+
+
+String mc1 = vars.get(&quot;planSystem_&quot;+ i);
+String planSystem;
+vars.put(&quot;planSystem&quot;,mc1);
+log.info(planSystem);
+
+
+String sc1 = vars.get(&quot;propertyName_&quot;+ i);
+String propertyName;
+vars.put(&quot;propertyName&quot;,sc1);
+log.info(propertyName);
+
+String cc1 = vars.get(&quot;propertyStatus_&quot;+ i);
+String propertyStatus;
+vars.put(&quot;propertyStatus&quot;,cc1);
+log.info(propertyStatus);
+
+String cn1 = vars.get(&quot;propertyType_&quot;+ i);
+String propertyType;
+vars.put(&quot;propertyType&quot;,cn1);
+log.info(propertyType);
+
+
+String ag1 = vars.get(&quot;propertyActiveStatus_&quot;+ i);
+String propertyActiveStatus;
+vars.put(&quot;propertyActiveStatus&quot;,ag1);
+log.info(propertyActiveStatus);
+
+
+String mo1 = vars.get(&quot;propertyThirdPartyId_&quot;+ i);
+String propertyThirdPartyId;
+vars.put(&quot;propertyThirdPartyId&quot;,mo1);
+log.info(propertyThirdPartyId);
+
+String ec = vars.get(&quot;buyType_&quot;+ i);
+String buyType;
+vars.put(&quot;buyType&quot;,ec);
+log.info(buyType);
+
+String en = vars.get(&quot;parentMediaProperty_&quot;+ i);
+String parentMediaProperty;
+vars.put(&quot;parentMediaProperty&quot;,en);
+log.info(parentMediaProperty);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ByMediaOcean-ID-Request-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&quot;${planSystem}&quot;]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${mediaPropertyByMoId}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">mediaoceanIds</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="230621657">&quot;name&quot;:&quot;${propertyName}&quot;</stringProp>
+                <stringProp name="1161795460">&quot;mediaOwnerId&quot;:&quot;${mediaOwnerId}&quot;</stringProp>
+                <stringProp name="761381476">&quot;PlanSystem&quot;:&quot;${planSystem}&quot;</stringProp>
+                <stringProp name="-1195317254">&quot;buyTypes&quot;:[&quot;${buyType}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MediaProperty-subMedia" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT o.mediaocean_id,
+  mp.mediaocean_id AS plan_system,
+  mpl.name,
+  mp.MEDIA_PROPERTY_STATUS as status,
+  mp.MEDIA_PROPERTY_TYPE as type,
+  mp.ACTIVE_STATUS,  
+  mp.THIRD_PARTY_ID,  
+  mpl.mediaocean_id as parentMediaProperty,
+  mt.name as subMediaName
+FROM media_property mp
+JOIN organisation o
+ON o.id= mp.MEDIA_OWNER_ID
+join MEDIA_PROP_SUB_MEDIA_LINK mpsm on 
+mp.id= mpsm.MEDIA_PROPERTY_ID 
+join   PC_MEDIA_PROP_LINK  pcmp
+on pcmp.CHILD_ID = mp.id
+join media_property mpl
+on pcmp.PARENT_ID = mpl.id
+join media_types mt
+on mt.id=mpsm.SUB_MEDIA_ID
+where   mp.active_status is not null
+and
+mp.third_party_id  is not null 
+and mpsm.is_deleted=0
+and rownum&lt;=10</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">mediaOwnerId,planSystem,propertyName,propertyStatus,propertyType,propertyActiveStatus,propertyThirdPartyId,parentMediaProperty,subMediaName</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${mediaOwnerId_#}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">${mediaOwnerId_#}</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+String aa1 = vars.get(&quot;mediaOwnerId_&quot;+ i);
+String mediaOwnerId;
+vars.put(&quot;mediaOwnerId&quot;,aa1);
+
+
+String mc1 = vars.get(&quot;planSystem_&quot;+ i);
+String planSystem;
+vars.put(&quot;planSystem&quot;,mc1);
+log.info(planSystem);
+
+
+String sc1 = vars.get(&quot;propertyName_&quot;+ i);
+String propertyName;
+vars.put(&quot;propertyName&quot;,sc1);
+log.info(propertyName);
+
+String cc1 = vars.get(&quot;propertyStatus_&quot;+ i);
+String propertyStatus;
+vars.put(&quot;propertyStatus&quot;,cc1);
+log.info(propertyStatus);
+
+String cn1 = vars.get(&quot;propertyType_&quot;+ i);
+String propertyType;
+vars.put(&quot;propertyType&quot;,cn1);
+log.info(propertyType);
+
+
+String ag1 = vars.get(&quot;propertyActiveStatus_&quot;+ i);
+String propertyActiveStatus;
+vars.put(&quot;propertyActiveStatus&quot;,ag1);
+log.info(propertyActiveStatus);
+
+
+String mo1 = vars.get(&quot;propertyThirdPartyId_&quot;+ i);
+String propertyThirdPartyId;
+vars.put(&quot;propertyThirdPartyId&quot;,mo1);
+log.info(propertyThirdPartyId);
+
+String ec = vars.get(&quot;subMediaName_&quot;+ i);
+String subMediaName;
+vars.put(&quot;subMediaName&quot;,ec);
+log.info(subMediaName);
+
+String en = vars.get(&quot;parentMediaProperty_&quot;+ i);
+String parentMediaProperty;
+vars.put(&quot;parentMediaProperty&quot;,en);
+log.info(parentMediaProperty);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ByMediaOcean-ID-Request-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&quot;${planSystem}&quot;]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${mediaPropertyByMoId}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">mediaoceanIds</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="230621657">&quot;name&quot;:&quot;${propertyName}&quot;</stringProp>
+                <stringProp name="1161795460">&quot;mediaOwnerId&quot;:&quot;${mediaOwnerId}&quot;</stringProp>
+                <stringProp name="761381476">&quot;PlanSystem&quot;:&quot;${planSystem}&quot;</stringProp>
+                <stringProp name="1217200187">&quot;parentMediaPropertyId&quot;:&quot;${parentMediaProperty}&quot;</stringProp>
+                <stringProp name="-1932572124">&quot;subMediaName&quot;:&quot;${subMediaName}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MediaProperty-By-SellerOrg-BuyType-BUYTYPE" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT o.mediaocean_id,
+  mp.mediaocean_id AS plan_system,
+  mpl.name,
+  mp.MEDIA_PROPERTY_STATUS as status,
+  mp.MEDIA_PROPERTY_TYPE as type,
+  mp.ACTIVE_STATUS,  
+  mp.THIRD_PARTY_ID,
+  bt.NAME as buyTypes,
+  mpl.mediaocean_id as parentMediaProperty,  
+  o1.mediaocean_id as sellerMoId
+FROM media_property mp
+JOIN organisation o
+ON o.id= mp.MEDIA_OWNER_ID
+join MEDIA_PROP_BUY_TYPE_LINK mpbt
+on mpbt.MEDIA_PROPERTY_ID = mp.id
+join buy_type bt on 
+bt.id= mpbt.BUY_TYPE_ID 
+join   PC_MEDIA_PROP_LINK  pcmp
+on pcmp.CHILD_ID = mp.id
+join media_property mpl
+on pcmp.PARENT_ID = mpl.id
+join MEDIA_PROPERTY_SELLER mps
+on mp.id=mps.MEDIA_PROPERTY_ID
+join organisation o1 
+on mps.seller_id=o1.id
+where  mp.active_status is not null
+and
+mp.third_party_id  is not null 
+AND o1.THIRD_PARTY_ID is not null
+and mps.status=&apos;ACTIVE&apos;
+</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">mediaOwnerId,planSystem,propertyName,propertyStatus,propertyType,propertyActiveStatus,propertyThirdPartyId,buyType,parentMediaProperty,sellerMoId</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${mediaOwnerId_#}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">${mediaOwnerId_#}</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+String aa1 = vars.get(&quot;mediaOwnerId_&quot;+ i);
+String mediaOwnerId;
+vars.put(&quot;mediaOwnerId&quot;,aa1);
+
+
+String mc1 = vars.get(&quot;sellerMoId_&quot;+ i);
+String sellerMoId;
+vars.put(&quot;sellerMoId&quot;,mc1);
+log.info(sellerMoId);
+
+String mc2 = vars.get(&quot;planSystem_&quot;+ i);
+String planSystem;
+vars.put(&quot;planSystem&quot;,mc1);
+log.info(planSystem);
+
+
+String sc1 = vars.get(&quot;propertyName_&quot;+ i);
+String propertyName;
+vars.put(&quot;propertyName&quot;,sc1);
+log.info(propertyName);
+
+String cc1 = vars.get(&quot;propertyStatus_&quot;+ i);
+String propertyStatus;
+vars.put(&quot;propertyStatus&quot;,cc1);
+log.info(propertyStatus);
+
+String cn1 = vars.get(&quot;propertyType_&quot;+ i);
+String propertyType;
+vars.put(&quot;propertyType&quot;,cn1);
+log.info(propertyType);
+
+
+String ag1 = vars.get(&quot;propertyActiveStatus_&quot;+ i);
+String propertyActiveStatus;
+vars.put(&quot;propertyActiveStatus&quot;,ag1);
+log.info(propertyActiveStatus);
+
+
+String mo1 = vars.get(&quot;propertyThirdPartyId_&quot;+ i);
+String propertyThirdPartyId;
+vars.put(&quot;propertyThirdPartyId&quot;,mo1);
+log.info(propertyThirdPartyId);
+
+String ec = vars.get(&quot;buyType_&quot;+ i);
+String buyType;
+vars.put(&quot;buyType&quot;,ec);
+log.info(buyType);
+
+String en = vars.get(&quot;parentMediaProperty_&quot;+ i);
+String parentMediaProperty;
+vars.put(&quot;parentMediaProperty&quot;,en);
+log.info(parentMediaProperty);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ByMediaOcean-ID-Request-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&quot;${sellerMoId}&quot;]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${mediaPropertyBySellerMoId}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="230621657">&quot;name&quot;:&quot;${propertyName}&quot;</stringProp>
+                <stringProp name="1161795460">&quot;mediaOwnerId&quot;:&quot;${mediaOwnerId}&quot;</stringProp>
+                <stringProp name="761381476">&quot;PlanSystem&quot;:&quot;${planSystem}&quot;</stringProp>
+                <stringProp name="1217200187">&quot;parentMediaPropertyId&quot;:&quot;${parentMediaProperty}&quot;</stringProp>
+                <stringProp name="-1335007278">&quot;SellSystem&quot;:&quot;${propertyThirdPartyId}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-MediaProperty-By-SellerOrg-BuyType-subMedia" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT o.mediaocean_id,
+  mp.mediaocean_id AS plan_system,
+  mpl.name,
+  mp.MEDIA_PROPERTY_STATUS as status,
+  mp.MEDIA_PROPERTY_TYPE as type,
+  mp.ACTIVE_STATUS,  
+  mp.THIRD_PARTY_ID, 
+  mpl.mediaocean_id as parentMediaProperty,  
+  o1.mediaocean_id as sellerMoId,
+  mt.name as subMediaName
+FROM media_property mp
+JOIN organisation o
+ON o.id= mp.MEDIA_OWNER_ID
+join   PC_MEDIA_PROP_LINK  pcmp
+on pcmp.CHILD_ID = mp.id
+join media_property mpl
+on pcmp.PARENT_ID = mpl.id
+join MEDIA_PROPERTY_SELLER mps
+on mp.id=mps.MEDIA_PROPERTY_ID
+join organisation o1 
+on mps.seller_id=o1.id
+join MEDIA_PROP_SUB_MEDIA_LINK mpsm on 
+mp.id= mpsm.MEDIA_PROPERTY_ID 
+join media_types mt
+on mt.id=mpsm.SUB_MEDIA_ID
+join MEDIA_PROPERTY_SELLER mps
+on mp.id=mps.MEDIA_PROPERTY_ID
+join organisation o1 on
+o1.id= mps.SELLER_ID
+where mpsm.is_deleted =0
+</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">mediaOwnerId,planSystem,propertyName,propertyStatus,propertyType,propertyActiveStatus,propertyThirdPartyId,parentMediaProperty,sellerMoId,subMediaName</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${mediaOwnerId_#}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">${mediaOwnerId_#}</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+String aa1 = vars.get(&quot;mediaOwnerId_&quot;+ i);
+String mediaOwnerId;
+vars.put(&quot;mediaOwnerId&quot;,aa1);
+
+
+String mc1 = vars.get(&quot;sellerMoId_&quot;+ i);
+String sellerMoId;
+vars.put(&quot;sellerMoId&quot;,mc1);
+log.info(sellerMoId);
+
+String mc2 = vars.get(&quot;planSystem_&quot;+ i);
+String planSystem;
+vars.put(&quot;planSystem&quot;,mc1);
+log.info(planSystem);
+
+
+String sc1 = vars.get(&quot;propertyName_&quot;+ i);
+String propertyName;
+vars.put(&quot;propertyName&quot;,sc1);
+log.info(propertyName);
+
+String cc1 = vars.get(&quot;propertyStatus_&quot;+ i);
+String propertyStatus;
+vars.put(&quot;propertyStatus&quot;,cc1);
+log.info(propertyStatus);
+
+String cn1 = vars.get(&quot;propertyType_&quot;+ i);
+String propertyType;
+vars.put(&quot;propertyType&quot;,cn1);
+log.info(propertyType);
+
+
+String ag1 = vars.get(&quot;propertyActiveStatus_&quot;+ i);
+String propertyActiveStatus;
+vars.put(&quot;propertyActiveStatus&quot;,ag1);
+log.info(propertyActiveStatus);
+
+
+String mo1 = vars.get(&quot;propertyThirdPartyId_&quot;+ i);
+String propertyThirdPartyId;
+vars.put(&quot;propertyThirdPartyId&quot;,mo1);
+log.info(propertyThirdPartyId);
+
+String ec = vars.get(&quot;buyType_&quot;+ i);
+String buyType;
+vars.put(&quot;buyType&quot;,ec);
+log.info(buyType);
+
+String en = vars.get(&quot;parentMediaProperty_&quot;+ i);
+String parentMediaProperty;
+vars.put(&quot;parentMediaProperty&quot;,en);
+log.info(parentMediaProperty);
+
+
+String ec = vars.get(&quot;subMediaName_&quot;+ i);
+String subMediaName;
+vars.put(&quot;subMediaName&quot;,ec);
+log.info(subMediaName);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ByMediaOcean-ID-Request-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&quot;${sellerMoId}&quot;]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${mediaPropertyBySellerMoId}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="230621657">&quot;name&quot;:&quot;${propertyName}&quot;</stringProp>
+                <stringProp name="1161795460">&quot;mediaOwnerId&quot;:&quot;${mediaOwnerId}&quot;</stringProp>
+                <stringProp name="761381476">&quot;PlanSystem&quot;:&quot;${planSystem}&quot;</stringProp>
+                <stringProp name="1217200187">&quot;parentMediaPropertyId&quot;:&quot;${parentMediaProperty}&quot;</stringProp>
+                <stringProp name="-1932572124">&quot;subMediaName&quot;:&quot;${subMediaName}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query-Master-MediaProperty-By-MoId-buyType" enabled="true">
+          <stringProp name="dataSource">dbconnMDM</stringProp>
+          <stringProp name="query">SELECT mp.mediaocean_id AS planSystem,
+  mp.name,
+  mp.MEDIA_PROPERTY_STATUS AS status,
+  mp.MEDIA_PROPERTY_TYPE   AS type,
+  mp.ACTIVE_STATUS,
+  mp.THIRD_PARTY_ID,
+  bt.NAME AS buyTypes
+FROM media_property mp
+JOIN MEDIA_PROP_BUY_TYPE_LINK mpbt
+ON mpbt.MEDIA_PROPERTY_ID = mp.id
+JOIN buy_type bt
+ON bt.id                 = mpbt.BUY_TYPE_ID
+WHERE mp.media_owner_id IS NULL
+AND mp.third_party_id   IS NOT NULL
+</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames">planSystem,propertyName,propertyStatus,propertyType,propertyActiveStatus,propertyThirdPartyId,buyTypes</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${planSystem_#}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">${planSystem_#}</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">counter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+            <stringProp name="BeanShellSampler.query">int i =Integer.parseInt(vars.get(&quot;counter&quot;));
+String mc1 = vars.get(&quot;planSystem_&quot;+ i);
+String planSystem;
+vars.put(&quot;planSystem&quot;,mc1);
+log.info(planSystem);
+
+
+String sc1 = vars.get(&quot;propertyName_&quot;+ i);
+String propertyName;
+vars.put(&quot;propertyName&quot;,sc1);
+log.info(propertyName);
+
+String cc1 = vars.get(&quot;propertyStatus_&quot;+ i);
+String propertyStatus;
+vars.put(&quot;propertyStatus&quot;,cc1);
+log.info(propertyStatus);
+
+String cn1 = vars.get(&quot;propertyType_&quot;+ i);
+String propertyType;
+vars.put(&quot;propertyType&quot;,cn1);
+log.info(propertyType);
+
+
+String ag1 = vars.get(&quot;propertyActiveStatus_&quot;+ i);
+String propertyActiveStatus;
+vars.put(&quot;propertyActiveStatus&quot;,ag1);
+log.info(propertyActiveStatus);
+
+
+String mo1 = vars.get(&quot;propertyThirdPartyId_&quot;+ i);
+String propertyThirdPartyId;
+vars.put(&quot;propertyThirdPartyId&quot;,mo1);
+log.info(propertyThirdPartyId);
+
+String ec = vars.get(&quot;buyType_&quot;+ i);
+String buyType;
+vars.put(&quot;buyType&quot;,ec);
+log.info(buyType);
+
+
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ByMediaOcean-ID-Request-${counter}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">[&quot;${planSystem}&quot;]</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${mediaPropertyByMoId}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">mediaoceanIds</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="230621657">&quot;name&quot;:&quot;${propertyName}&quot;</stringProp>
+                <stringProp name="761381476">&quot;PlanSystem&quot;:&quot;${planSystem}&quot;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
